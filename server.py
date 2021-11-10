@@ -29,7 +29,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 #
 #     DATABASEURI = "postgresql://gravano:foobar@34.74.246.148/proj1part2"
 #
-DATABASEURI = "postgresql://user:password@34.74.246.148/proj1part2"
+DATABASEURI = "postgresql://arb2280:8173@34.74.246.148/proj1part2"
 
 
 #
@@ -41,12 +41,13 @@ engine = create_engine(DATABASEURI)
 # Example of running queries in your database
 # Note that this will probably not work if you already have a table named 'test' in your database, containing meaningful data. This is only an example showing you how to run queries in your database using SQLAlchemy.
 #
+'''
 engine.execute("""CREATE TABLE IF NOT EXISTS test (
   id serial,
   name text
 );""")
 engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
-
+'''
 
 @app.before_request
 def before_request():
@@ -89,6 +90,7 @@ def teardown_request(exception):
 # see for routing: https://flask.palletsprojects.com/en/2.0.x/quickstart/?highlight=routing
 # see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 #
+'''
 @app.route('/')
 def index():
   """
@@ -149,7 +151,11 @@ def index():
   # for example, the below file reads template/index.html
   #
   return render_template("index.html", **context)
+'''
 
+@app.rout('/')
+def home():
+    return render_template("home.html")
 #
 # This is an example of a different path.  You can see it at:
 # 
