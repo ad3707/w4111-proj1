@@ -164,10 +164,35 @@ def home():
 # Notice that the function name is another() rather than index()
 # The functions for each app.route need to have different names
 #
-@app.route('/signup')
-def another():
+@app.route('/signup', methods = ["GET", "POST"])
+def signup():
     #name = request.form['name']
     #g.conn.execute(
+    if request.method == "POST"
+        name = request.form['name']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(name) VALUES (%s)',name)
+        username = request.form['username']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(username) VALUES (%s)',username)
+        profile_picture = request.form['profile_picture']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(profile_picture) VALUES (%s)',profile_picture)
+        personal_email = request.form['personal_email']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(personal_email) VALUES (%s)',personal_email)
+        work_email = request.form['work_email']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(work_email) VALUES (%s)',work_email)
+        cell_number = request.form['cell_number']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(cell_number) VALUES (%s)',cell_number)
+        home_number = request.form['home_number']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(home_number) VALUES (%s)',home_number)
+        work_number = request.form['work_number']
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(work_number) VALUES (%s)',work_number)
+        street_address = request.form['street_address']
+        g.conn.execute('INSERT INTO Address(street_address) VALUES (%s)',street_address)
+        city = request.form['city']
+        g.conn.execute('INSERT INTO Address(city) VALUES (%s)',city)
+        state = request.form['state']
+        g.conn.execute('INSERT INTO Address(state) VALUES (%s)',state)
+        zip = request.form['zip']
+        g.conn.execute('INSERT INTO Address(zip) VALUES (%d)',zip)     
   return render_template("signup.html")
 
 '''
