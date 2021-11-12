@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+    
+    btn {
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #ffcda3;
+      font-size: 16px;
+    }
+    
+    
+  </style>
+
+
+<body>
+  <h1>Add Dog</h1>
+  <form action = "{{url_for("addDog")}}" method = "post"> 
+    <input type = "text" id = "name" placeholder = "Name" required/>
+    <input type = "text" id = "breed" placeholder = "Breed" required />
+    <input type = "date" id = "birthday" placeholder = "Birthday" required/>
+    <input type = "text" id = "profile_picture" placeholder = "Profile Picture" required/>
+    <input type = "text" id = "bio" placeholder = "Bio" />
+    <input type = "radio" id = "bio" placeholder = "sex" />
+   
+    
+    <div class = "btn">
+    <button type = "submit"> Add </button>
+    </div>
+  </form>
+    
+
+</body>
+
+
+</html>
