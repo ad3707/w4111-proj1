@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <style>
     body{ 
@@ -9,6 +10,22 @@
 
 <body>
   <h1>Sign Up</h1>
+  <form action = "{{url_for("gfg")}}" method = "post"> 
+      <input type = "text" id = "name" placeholder = "Name" required/>
+    <input type = "text" id = "username" placeholder = "Username" required/>
+    <input type = "text" id = "profile_picture" placeholder = "Profile Picture" required/>
+    <input type = "email" id = "personal_email" placeholder = "Personal Email" required />
+    <input type = "email" id = "work_email" placeholder = "Work Email" />
+    <input type = "tel" id = "cell_number" placeholder = "Cell Number" /> 
+    <input type = "tel" id = "home_number" placeholder = "Home Number" />
+    <input type = "tel" id = "work_number" placeholder = "Work Number" />
+    <p> Home Address </p>
+    <input type = "text" id = "street_address" placeholder = "Street Address" />
+    <input type = "text" id = "city" placeholder = "City" />
+    <input type = "text" id = "state" placeholder = "State" />
+    <input type = "number" id = "zip" placeholder = "Zip Code" /> 
+    
+    
 
 </body>
 
