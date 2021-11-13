@@ -169,29 +169,71 @@ def signup():
     #name = request.form['name']
     #g.conn.execute(
     if request.method == "POST"
-        name = request.form['name']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(name) VALUES (%s)',name)
         username = request.form['username']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(username) VALUES (%s)',username)
+        name = request.form['name']
+        date_joined = request.form['date_joined']
         profile_picture = request.form['profile_picture']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(profile_picture) VALUES (%s)',profile_picture)
         personal_email = request.form['personal_email']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(personal_email) VALUES (%s)',personal_email)
         work_email = request.form['work_email']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(work_email) VALUES (%s)',work_email)
         cell_number = request.form['cell_number']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(cell_number) VALUES (%s)',cell_number)
         home_number = request.form['home_number']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(home_number) VALUES (%s)',home_number)
         work_number = request.form['work_number']
-        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(work_number) VALUES (%s)',work_number)
         street_address = request.form['street_address']
-        g.conn.execute('INSERT INTO Address(street_address) VALUES (%s)',street_address)
+        password = request.form['password']
         city = request.form['city']
-        g.conn.execute('INSERT INTO Address(city) VALUES (%s)',city)
         state = request.form['state']
-        g.conn.execute('INSERT INTO Address(state) VALUES (%s)',state)
         zip = request.form['zip']
+        error = None
+        
+        if not username:
+            error = 'Username is required'
+        elif not personal_email:
+            error = 'A personal email is required'
+        elif not street_address:
+            error = 'A street address is required'
+        elif not zip:
+            error = 'A zipcode is required'
+        
+        if error is None:
+            
+            try:
+                g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(username, personal_email) VALUES (%s, %s)',username, personal_email)
+            except Exception:
+                error = 'Invalid username or email. Check that username is 15 or less characters and email is 50 or less. If valid, username or email is taken. Try again.'
+                
+        if error is None:
+            try: 
+                g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(name) VALUES (%s)',name)
+            except Exception:
+                error = 'Invalid name. Name must be 25 characters or less. Try again'
+        
+        if error is None:
+            try: 
+                g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(profile_picture) VALUES (%s)',profile_picture)
+            except Exception:
+                error = 'Invalid profile_picture URL. URL must be 200 characters or less. Try again'
+                
+        if error is None:
+            try: 
+                g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(name) VALUES (%s)',name)
+            except Exception:
+                error = 'Invalid name. Name must be 25 characters or less. Try again'
+        
+        
+        
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(personal_email) VALUES (%s)',personal_email)
+        
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(work_email) VALUES (%s)',work_email)
+        
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(cell_number) VALUES (%s)',cell_number)
+        
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(home_number) VALUES (%s)',home_number)
+        
+        g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(work_number) VALUES (%s)',work_number)
+        g.conn.execute('INSERT INTO Address(street_address) VALUES (%s)',street_address)
+        
+        g.conn.execute('INSERT INTO Address(city) VALUES (%s)',city)
+        g.conn.execute('INSERT INTO Address(state) VALUES (%s)',state)
         g.conn.execute('INSERT INTO Address(zip) VALUES (%d)',zip)     
   return render_template("signup.html")
 
