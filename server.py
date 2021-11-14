@@ -153,7 +153,7 @@ def index():
   return render_template("index.html", **context)
 '''
 
-@app.rout('/')
+@app.route('/')
 def home():
     return render_template("home.html")
 #
@@ -168,7 +168,7 @@ def home():
 def signup():
     #name = request.form['name']
     #g.conn.execute(
-    if request.method == "POST"
+    if request.method == "POST":
         username = request.form['username']
         personal_email = request.form['personal_email']
         password = request.form['password']
@@ -178,7 +178,7 @@ def signup():
         except Exception:
                 error = 'Invalid username, email, or password. Check that username and password are at most 15 characters and email is at most 50. Otherwise, username or email is taken. Try again.'
                 
-  return render_template("signup.html")
+    return render_template("signup.html")
 
 
 
@@ -187,7 +187,7 @@ def signup():
     
     username = request.args.get('username')
     
-    if request.method == "POST"
+    if request.method == "POST":
         name = request.form['name']
         date_joined = request.form['date_joined']
         profile_picture = request.form['profile_picture']
@@ -220,7 +220,7 @@ def signup():
                 error = 'Invalid name. Name must be 25 characters or less. Try again'
                 
                 
-       return render_template("signup_part2.html", 
+    return render_template("signup_part2.html", 
         
         
 
