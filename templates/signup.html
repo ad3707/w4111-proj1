@@ -24,7 +24,7 @@
       background-color: #00d0ff;
       font-size: 60px;
       color: #ffd166;
-
+      text-align: "center";
     }
 
     #form {
@@ -72,11 +72,11 @@
 
 <script>
 $(document).ready(function() {
-  $('#btn').click(function()) {
+  $('#btn').click(function() {
     const username = document.getElementById('username');
-    $('#container').append('<a href = "$(username)" target = "#signup2"> Create </a>');
-  } )
-}
+    $('#form').append('<a href = "$('username')" target = "#signup2"> Create </a>');
+  })
+})
 
 </script>
 
