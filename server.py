@@ -182,8 +182,8 @@ def signup():
 
 
 
-@app.route('/signup_2', methods = ["GET", "POST"])
-def signup():
+@app.route('/signup2', methods = ["GET", "POST"])
+def signup2():
     
     username = request.args.get('username')
     
@@ -220,7 +220,7 @@ def signup():
                 error = 'Invalid name. Name must be 25 characters or less. Try again'
                 
                 
-    return render_template("signup_part2.html") 
+    return render_template("signup2.html") 
         
         
 
