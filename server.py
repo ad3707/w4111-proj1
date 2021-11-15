@@ -218,8 +218,8 @@ def addDog():
         except Exception:
             error = 'Invalid name. Name should be at most 11 characters and you cannot have two dogs of the same name'
             
-        if error = None: 
-            
+        if error is None: 
+            return redirect(url_for('mydogs',user = username))
             
   
     
@@ -230,6 +230,7 @@ def addDog():
 def signup():
     #name = request.form['name']
     #g.conn.execute(
+    error = None
     if request.method == "POST":
         username = request.form['username']
         personal_email = request.form['personal_email']
@@ -239,15 +240,18 @@ def signup():
             g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(username, personal_email, password) VALUES (%s, %s)',username, personal_email, password)
         except Exception:
                 error = 'Invalid username, email, or password. Check that username and password are at most 15 characters and email is at most 50. Otherwise, username or email is taken. Try again.'
+        if error is None:
+            return redirect(url_for('signup2',user = username))
+            
                 
-    return render_template("signup.html")
+    return render_template("signup.html", error = error)
 
 
 
-@app.route('/signup2/<username>', methods = ["GET", "POST"])
-def signup2():
-    
+@app.route('/signup2', methods = ["GET", "POST"])
+def signup2():    
     username = request.args.get('username')
+    error = None
     
     if request.method == "POST":
         name = request.form['name']
@@ -261,28 +265,66 @@ def signup2():
         city = request.form['city']
         state = request.form['state']
         zip = request.form['zip']
-        error = None
         
-        if error is None:
+        if error is None and name:
             try: 
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET name = (%s) WHERE username = (%s)',name, username)
             except Exception:
                 error = 'Invalid name. Name must be 25 characters or less. Try again'
-        
-        if error is None:
+        if error is None and date_joined:
             try: 
-                g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(profile_picture) VALUES (%s)',profile_picture)
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET date_joined = (%s) WHERE username = (%s)',date_joined, username)
             except Exception:
-                error = 'Invalid profile_picture URL. URL must be 200 characters or less. Try again'
-                
-        if error is None:
+                error = 'Invalid date. Try again'
+        if error is None and profile_picture:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET profile_picture = (%s) WHERE username = (%s)', profile_picture, username)
+            except Exception:
+                error = 'Invalid profile_picture URL. URL must be 200 characters or less. Try again'           
+        if error is None and work_email:
             try: 
-                g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(name) VALUES (%s)',name)
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET work_email = (%s) WHERE username = (%s)',work_email, username)
             except Exception:
-                error = 'Invalid name. Name must be 25 characters or less. Try again'
+                error = 'Invalid email. Email must be less than 50 characters and a valid address Try again'
+        if error is None and cell_number:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET cell_number = (%s) WHERE username = (%s)',cell_number, username)
+            except Exception:
+                error = 'Invalid cell number. Number mmust be 11 characters or less and must be unique. Try again'
+        if error is None and home_number:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET home_number = (%s) WHERE username = (%s)',home_number, username)
+            except Exception:
+                error = 'Invalid home number. Number mmust be 11 characters or less and must be unique. Try again'
+        if error is None and work_number:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET work_number = (%s) WHERE username = (%s)', work_number, username)
+            except Exception:
+                error = 'Invalid work number. Number mmust be 11 characters or less and must be unique. Try again'
+        if error is None:
+            address = []
+            try:
+                cursor = g.conn.execute('SELECT street_address FROM Address WHERE street_address = (%s) AND zip = (%s)', street_address, zip)
+                for result in cursor:
+                    address.append(result['street_address'])
+                cursor.close()
+            except Exception:
+                error = 'Unable to query address'
+            if len(address) == 0:
+                try:
+                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %s)', street_address, zip)
+                except Exception:
+                    error = 'Invalid street address, city, state, or zipcode. Address is at most 30 characters while city is at most 20 and state is at most 15. Zipcode must be an integer'
+        if error is None:
+            try:
+                g.conn.execute('INSERT INTO Resides_In(username, street_address, zip) VALUES (%s, %s, %s)', username, street_address, zip)
+            except Exception:
+                error = 'Unable to create address'
+        if error is None:
+            return redirect(url_for('home',user = username))      
+            
                 
-                
-    return render_template("signup2.html") 
+    return render_template("signup2.html", error = error) 
         
         
 
