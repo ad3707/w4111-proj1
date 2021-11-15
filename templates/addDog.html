@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+  
+  <head>
+    <title> Dinder </title>
+  </head> 
+  
   <style>
     body{ 
       font-size: 15pt;
@@ -40,7 +45,12 @@
   </style>
 
 
+  
 <body>
+  <div id = "header">
+  <img src = "logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+  </div>
+  
   <h1>Add Dog</h1>
   <div id = "form">
   <form action = "{{url_for("addDog")}}" method = "post"> 
