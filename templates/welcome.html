@@ -1,23 +1,31 @@
 <html>
+
+<head>
+<title> Dinder </title>
+</head>
+
   <style>
-    body{ 
+
+    body{
       font-size: 15pt;
-      font-family: arial;
+      font-family: 'Copperplate', serif;
+      text-align: center;
     }
-    
+
     .button {
-    display: block;
     width: 115px;
     height: 25px;
-    background: #4E9CAF;
+    background: #C4C4C4;
     padding: 10px;
     text-align: center;
-    border-radius: 5px;
-    color: white;
+    border-radius: 10px;
+    color: black;
     font-weight: bold;
-    line-height: 25px;
+    margin-top: 100px;
+    text-decoration:none;
 }
-    
+
+
     #header {
      background-color: #00d0ff;
      margin: auto;
@@ -25,24 +33,85 @@
      height: 150px;
    }
 
-    
+
+
+   #box {
+     background-color: #fad195;
+     height: 400px;
+     width: 250px;
+     float:left;
+     margin-left: 50px;
+     margin-top: 50px;
+     margin-bottom: 0px;
+     text-align: center;
+     border-radius: 10px;
+
+   }
+
+   #container  {
+     width: 1500px;
+   }
+
+   h3 {
+     color: black;
+     text-align: center;
+     background-color: #FFE1E1 ;
+   }
+
+   #btncontainer {
+     margin: 70px auto 60px;
+
+   }
+
+#signin{
+ background-color: #FFE1E1;
+ float: right;
+ margin-top: 70px;
+ margin-right:40px;
+ height: 300px;
+ width: 250px;
+ padding: 20px;
+
+}
+
   </style>
 
 
 <body>
-  
-  <div id = "header"> 
+
+  <div id = "header">
     <img src="logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
-  </div> 
-  
-  <h1>Welcome!</h1>
+  </div>
+  <h2>Find the perfect friend for your loyal, fuzzy friend!</h2>
 
 
-<p><a href="signup" class="button">Sign Up</a></p>
-  
-<p><a href="signin" class="button">Sign In</a></p>
+<div id = "container">
 
-  
+<span id = "box">
+  <h3> Why Dinder? </h3>
+</span>
+
+  <span id = "box">
+    <h3> Our Process </h3>
+</span>
+
+
+  <span id = "box">
+    <h3> Result </h3>
+</div>
+
+<div id = "signin">
+
+<div id = "btncontainer">
+<a href="/signup" class="button"> Sign Up</a>
+</div>
+
+<div id = "btncontainer">
+<a href="/signin" class="button"> Sign In </a>
+</div>
+
+</div>
+
 </body>
 
 
