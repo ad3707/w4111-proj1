@@ -53,13 +53,26 @@
   <div id = "inputs">
    <input type = "text" id = "username" placeholder = "Username" required/>
   </div>
+  
    <div id = "inputs">
      <input type = "text" id = "password" placeholder = "Password" required />
    </div>
+  
  </form>
  <button id="button">Create</button>
   </div>
 </body>
+ 
+ <script>
+  document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    username = document.getElementById('username');
+    password = document.getElementById('password');
+    location.href =  '/signup2?username=' + username.value + '&password=' + password.value;
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
 
 </script>
 </html>
