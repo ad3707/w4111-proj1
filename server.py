@@ -164,6 +164,23 @@ def home():
 # Notice that the function name is another() rather than index()
 # The functions for each app.route need to have different names
 #
+
+@app.rout('/signin', methods = ["GET", "POST"])
+def signin():
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+        
+        try: 
+              cursor = g.conn.execute('SELECT username FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s) AND password = (%s)', username, password)
+              login = []
+              for result in cursor:
+                    login.append(result['username'])  # can also be accessed using result[0]
+              cursor.close()
+              if len(login) == 1:
+                    return 
+              
+            
 @app.route('/signup', methods = ["GET", "POST"])
 def signup():
     #name = request.form['name']
