@@ -54,12 +54,17 @@
 
       <div id = "form">
     <form action = "{{url_for("signup2")}}" method = "post">
-      <div id = "inputs">
-    <input type = "text" name = "profile_picture" id = "profile_picture" placeholder = "Profile Picture" /> 
+      
+    <div id = "inputs">
+    <input type = "text" name = "name" id = "name" placeholder = "Name" /> 
+      </div>
+      
+    <div id = "inputs">
+    <input type = "text" name = "date_joined" id = "date_joined" placeholder = "Date Joined" /> 
       </div>
       
       <div id = "inputs">
-    <input type = "email" name = "personal_email" id = "personal_email" placeholder = "Personal Email" required /> 
+    <input type = "text" name = "profile_picture" id = "profile_picture" placeholder = "Profile Picture" /> 
       </div>
       
       <div id = "inputs">
@@ -80,7 +85,7 @@
           </div>
          
         <div id = "inputs">
-    <input type = "text" name = "street_address" id = "street_address" placeholder = "Street Address" />
+    <input type = "text" name = "street_address" id = "street_address" placeholder = "Street Address" required />
          </div>
         
      <div id = "inputs">
@@ -92,7 +97,7 @@
          </div>
     
        <div id = "inputs">
-      <input type = "number" name = "zip" id = "zip" placeholder = "Zip Code" />
+      <input type = "number" name = "zip" id = "zip" placeholder = "Zip Code" required />
        </div>
       </form>
         <button id="button">Create</button>
