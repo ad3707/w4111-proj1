@@ -193,7 +193,13 @@ def signin():
 @app.route('/home')
 def home():
     username = request.args.get('user')
-    return render_template("home.html")
+    print(username)
+    return render_template("home.html", user = username)
+
+@app.rout('/mydogs')
+def mydogs():
+    username = request.args.get('user')
+    return render_template("mydogs.html")
 
     
 @app.route('/signup', methods = ["GET", "POST"])
