@@ -196,7 +196,7 @@ def home():
     print(username)
     return render_template("home.html", user = username)
 
-@app.rout('/mydogs')
+@app.route('/mydogs')
 def mydogs():
     username = request.args.get('user')
     return render_template("mydogs.html")
