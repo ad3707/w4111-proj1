@@ -36,10 +36,15 @@
    }
 
  </style>
+ 
+ {% if error_message %}
+  <p>{{ error_message }}</p>
+{% endif %}
 
 <head>
  <title> Dinder </title>
  </head>
+ 
 
 <body>
  <div id = "header">
