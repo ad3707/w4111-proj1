@@ -187,7 +187,7 @@ def signin():
         
         error = 'Invalid username or password'
         
-    return render_template("signin.html", error = [error])
+    return render_template("signin.html", error = error)
             
 # url should look like home?user=<abc>
 @app.route('/home')
