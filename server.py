@@ -201,6 +201,30 @@ def mydogs():
     username = request.args.get('user')
     return render_template("mydogs.html")
 
+@app.route('/addDog', methods = ["GET", "POST"])
+def addDog():
+    username = request.args.get('user')
+    error = None
+    if request.method == "POST":
+        name = request.form['name']
+        breed = request.form['breed']
+        birthday = request.form ['birthday']
+        profile_picture = request.form['profile_picture']
+        bio = request.form['bio']
+        sex = request.form['sex']
+        
+        try:
+            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(username, name) VALUES (%s, %s)', username, name)
+        except Exception:
+            error = 'Invalid name. Name should be at most 11 characters and you cannot have two dogs of the same name'
+            
+        if error = None: 
+            
+            
+  
+    
+    return render_template("addDog.html")
+
     
 @app.route('/signup', methods = ["GET", "POST"])
 def signup():
