@@ -154,8 +154,8 @@ def index():
 '''
 
 @app.route('/')
-def home():
-    return render_template("home.html")
+def welcome():
+    return render_template("welcome.html")
 #
 # This is an example of a different path.  You can see it at:
 # 
@@ -165,22 +165,36 @@ def home():
 # The functions for each app.route need to have different names
 #
 
-@app.rout('/signin', methods = ["GET", "POST"])
+@app.route('/signin', methods = ["GET", "POST"])
 def signin():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
         
+        login = []
         try: 
-              cursor = g.conn.execute('SELECT username FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s) AND password = (%s)', username, password)
-              login = []
-              for result in cursor:
-                    login.append(result['username'])  # can also be accessed using result[0]
-              cursor.close()
-              if len(login) == 1:
-                    return 
-              
+            cursor = g.conn.execute('SELECT username FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s) AND password = (%s)', username, password)
+            for result in cursor:
+                login.append(result['username'])  # can also be accessed using result[0]
+            cursor.close()
+        except Exception:
+            error = 'Invalid search query'
+        elif len(login) ==1:
+            return redirect(url_for('home',user = username))
+        
+        error = 'Invalid username or password'
+        
+        flash(error)
+        
+    return render_template("signin.html")
             
+              
+@app.route('/home')
+def home():
+    username = request.args.get('user')
+    return render_template("home.html")
+
+    
 @app.route('/signup', methods = ["GET", "POST"])
 def signup():
     #name = request.form['name']
