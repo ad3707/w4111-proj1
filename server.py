@@ -171,6 +171,8 @@ def signin():
         username = request.form['username']
         password = request.form['password']
         
+        print(username)
+        
         login = []
         try: 
             cursor = g.conn.execute('SELECT username FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s) AND password = (%s)', username, password)
@@ -188,7 +190,7 @@ def signin():
         
     return render_template("signin.html")
             
-              
+# url should look like home?user=<abc>
 @app.route('/home')
 def home():
     username = request.args.get('user')
