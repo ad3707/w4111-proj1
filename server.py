@@ -179,7 +179,7 @@ def signin():
             cursor.close()
         except Exception:
             error = 'Invalid search query'
-        elif len(login) == 1:
+        if len(login) == 1:
             return redirect(url_for('home',user = username))
         
         error = 'Invalid username or password'
