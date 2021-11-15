@@ -3,13 +3,11 @@
   <style>
     body{
       font-size: 15pt;
-      font-family: arial;
-    }
-
-    btn {
-      margin-top: 10px;
+      font-family: Sanchez;
       text-align: center;
     }
+
+
 
     button {
       width: 150px;
@@ -56,17 +54,46 @@
 
       <div id = "form">
     <form action = "{{url_for("signup2")}}" method = "post">
-    <input type = "text" id = "profile_picture" placeholder = "Profile Picture" /> <br> 
-    <input type = "email" id = "personal_email" placeholder = "Personal Email" required /> <br>
-    <input type = "email" id = "work_email" placeholder = "Work Email" /> <br>
-    <input type = "tel" id = "cell_number" placeholder = "Cell Number" /> <br>
-    <input type = "tel" id = "home_number" placeholder = "Home Number" /> <br>
+      <div id = "inputs">
+    <input type = "text" id = "profile_picture" placeholder = "Profile Picture" /> 
+      </div>
+      
+      <div id = "inputs">
+    <input type = "email" id = "personal_email" placeholder = "Personal Email" required /> 
+      </div>
+      
+      <div id = "inputs">
+    <input type = "email" id = "work_email" placeholder = "Work Email" /> 
+      </div>
+      
+      <div id = "inputs">
+    <input type = "tel" id = "cell_number" placeholder = "Cell Number" /> 
+      </div>
+      
+      <div id = "inputs">
+    <input type = "tel" id = "home_number" placeholder = "Home Number" />
+      </div>
+      
+      <div id = "inputs">
     <input type = "tel" id = "work_number" placeholder = "Work Number" />
     <p> Home Address </p>
+          </div>
+         
+        <div id = "inputs">
     <input type = "text" id = "street_address" placeholder = "Street Address" />
-    <input type = "text" id = "city" placeholder = "City" />
-    <input type = "text" id = "state" placeholder = "State" /> <br>
-    <input type = "number" id = "zip" placeholder = "Zip Code" />
+         </div>
+        
+     <div id = "inputs">
+       <input type = "text" id = "city" placeholder = "City" />
+         </div>
+           
+     <div id = "inputs">
+       <input type = "text" id = "state" placeholder = "State" /> 
+         </div>
+    
+       <div id = "inputs">
+      <input type = "number" id = "zip" placeholder = "Zip Code" />
+       </div>
 </div>
   </form>
 
@@ -74,11 +101,13 @@
 </body>
 
 <script>
-$(document).ready(function() {
-  $('#btn').click(function()) {
-    const username = document.getElementById('username');
-    $('#container').append('<a href = "$(username)" target = "#signup2"> Create </a>');
-  } )
+document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    username = url.searchParams.get("username");
+    location.href =  '/addDog?username=' + username.value;
+    var container = document.getElementById('form');
+    container.appendChild(a);
 }
 
 </script>
