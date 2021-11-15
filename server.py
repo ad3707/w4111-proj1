@@ -165,7 +165,7 @@ def welcome():
 # The functions for each app.route need to have different names
 #
 
-@app.route('/signin', methods = ["GET", "POST"])
+@app.route('/signin', methods = ["GET", "POST"]) #<username>
 def signin():
     if request.method == "POST":
         username = request.form['username']
@@ -213,7 +213,7 @@ def signup():
 
 
 
-@app.route('/signup2', methods = ["GET", "POST"])
+@app.route('/signup2/<username>', methods = ["GET", "POST"])
 def signup2():
     
     username = request.args.get('username')
