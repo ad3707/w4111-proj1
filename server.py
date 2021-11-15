@@ -167,6 +167,7 @@ def welcome():
 
 @app.route('/signin', methods = ["GET", "POST"]) #<username>
 def signin():
+    error = None
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
