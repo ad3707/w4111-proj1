@@ -299,7 +299,7 @@ def dogHome():
             accomodation_list.append(result['description'])
         cursor.close()
         
-        context_accomodation = dict(data_accomodations = accomodation_list)
+        context_accomodations = dict(data_accomodations = accomodation_list)
         
     except Exception:
         error = 'Unable to collect dog accomodations' 
