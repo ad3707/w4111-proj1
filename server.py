@@ -37,17 +37,6 @@ DATABASEURI = "postgresql://arb2280:8173@34.74.246.148/proj1part2"
 #
 engine = create_engine(DATABASEURI)
 
-#
-# Example of running queries in your database
-# Note that this will probably not work if you already have a table named 'test' in your database, containing meaningful data. This is only an example showing you how to run queries in your database using SQLAlchemy.
-#
-'''
-engine.execute("""CREATE TABLE IF NOT EXISTS test (
-  id serial,
-  name text
-);""")
-engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
-'''
 
 @app.before_request
 def before_request():
@@ -236,6 +225,54 @@ def mydogs():
     print(context_profile_pictures)
    
     return render_template("mydogs.html", error = error, **context_names, **context_profile_pictures, user = username)
+
+@app.route('/dogHome')
+def dogHome():
+    username = request.args.get('user')
+    name = request.args.get('name')
+    username_two = request.args.get('user_two')
+    name_two = request.args.get('name_two')
+    error = None
+    birthday_list = []
+    breed_list = []
+    sex_list = []
+    profile_picture_list = []
+    bio_list = []
+    since_list = []
+    size_list = []
+    build_list = []
+    
+    try:
+        cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username_two, name_two)
+        for result in cursor:
+            birthday_list.append(result['birthday'])                            
+            breed_list.append(result['breed'])
+            sex_list.append(result['sex'])
+            profile_picture_list.append(result['profile_picture'])
+            bio_list.append(result['bio'])
+            since_list.append(result['since'])
+            size_list.append(result['size'])
+            build_list.append(result['build'])
+        cursor.close()
+        birthday = birthday_list[0]
+        breed = breed_list[0]
+        sex = sex_list[0]
+        profile_picture = profile_picture [0]
+        bio_list
+        
+
+    
+    try:
+        cursor = g.conn.execute('SELECT name, profile_picture FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s)', username)
+        for result in cursor:
+            name_list.append(result['name'])
+            profile_picture_list.append(result['profile_picture'])
+        cursor.close()
+        name = name_list[0]
+        profile_picture = profile_picture_list[0]
+    except Exception:
+    
+    return render_template("dogHome.html"
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
