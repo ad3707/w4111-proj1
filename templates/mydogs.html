@@ -40,7 +40,7 @@
    #box {
      background-color: #fad195;
      height: 380px;
-     width: 250px;
+     width: 270px;
      float:left;
      margin-left: 50px;
      margin-top: 50px;
@@ -59,7 +59,6 @@
    h3 {
      color: black;
      text-align: center;
-     background-color: #FFE1E1 ;
    }
 
    #btncontainer {
@@ -108,7 +107,7 @@
   <div> 
     {% for i in range(data_one|length) %}
     <span id = "box"> <img src = {{ data_two[i] }} id = "imglay"> 
-      {{ data_one[i] }}
+      <h3> {{ data_one[i] }} </h3>
       <a href="/dogHome?name={{ data_one[i] }}" class="button"> Learn about {{ data_one[i] }} </a>  
     </span>
     {% endfor %}
