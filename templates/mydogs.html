@@ -22,7 +22,7 @@
     border-radius: 10px;
     color: black;
     font-weight: bold;
-    margin-top: 100px;
+    margin-top: 150px;
     text-decoration:none;
     box-shadow: 4px 5px #878787;
 }
@@ -106,7 +106,9 @@
   <div> 
     {% for img in data_two %}
     <span id = "box"> <img src = {{img}} id = "imglay" height = 200px width = 200px> 
-      <a href="/dogHome?name={{name}}" class="button"> Learn about {{name}} </a>  </span>
+      {{data_one[img]}}
+      <a href="/dogHome?name={{name}}" class="button"> Learn about {{name}} </a>  
+    </span>
     {% endfor %}
    </div>
    
