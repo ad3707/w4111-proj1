@@ -273,6 +273,9 @@ def dogHome():
         cursor.close()
         
         context_activity = dict(data_activities = activity_list)
+        
+    except Exception:
+        error = 'Unable to collect dog activities'        
             
              
 
