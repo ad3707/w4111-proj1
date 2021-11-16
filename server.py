@@ -194,12 +194,44 @@ def signin():
 def home():
     username = request.args.get('user')
     print(username)
-    return render_template("home.html", user = username)
+    error = error
+    name_list = []
+    profile_picture_list = []
+    
+    try:
+        cursor = g.conn.execute('SELECT name, profile_picture FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s)', username)
+        for result in cursor:
+            name_list.append(result['name'])
+            profile_picture_list.append(result['profile_picture'])
+        cursor.close()
+        name = name_list[0]
+        profile_picture = profile_picture_list[0]
+    except Exception:
+        error = 'Invalid search query'
+        
+                  
+    return render_template("home.html", user = username, name = name, profile_picture = profile_picture)
 
 @app.route('/mydogs')
 def mydogs():
     username = request.args.get('user')
-    return render_template("mydogs.html")
+    error = None
+    names = []
+    profile_pictures = []
+    try:
+        cursor = g.conn.execute('SELECT name, profile_picture FROM Dogs_Owned_By_Has_Physique WHERE username = (%s)', username)
+        for result in cursor:
+            names.append(result['name'])
+            profile_pictures.append(result['profile_picture'])
+        cursor.close()
+        
+        context_names = dict(data = names)
+        context_profile_pictures = dict(data = profile_pictures)
+        
+    except Exception:
+        error = 'Query Failed'
+   
+    return render_template("mydogs.html", error = error, **context_names, **context_profile_pictures, user = username)
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
