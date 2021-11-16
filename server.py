@@ -295,7 +295,7 @@ def dogHome():
         
     accomodation_list = []    
     try:
-        cursor = g.conn.execute('SELECT A.description FROM Accommodations A, Has_Accommodation H WHERE H.username = (%s) AND H.name = (%s) AND H.accomodation_id = A.accomodation_id', username, name)
+        cursor = g.conn.execute('SELECT A.description FROM Accommodations A, Has_Accommodation H WHERE H.username = (%s) AND H.name = (%s) AND H.accommodation_id = A.accommodation_id', username, name)
         for result in cursor:
             accomodation_list.append(result['description'])
         cursor.close()
