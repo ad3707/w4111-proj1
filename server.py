@@ -154,27 +154,6 @@ def welcome():
 # The functions for each app.route need to have different names
 #
 
-@app.route('/addFriend', methods = ["GET","POST"])
-def addFriend():
-    cursor = g.conn.execute("SELECT username,name FROM Dogs_Owned_By_Has_Physique")
-    dogNames = []
-    users = []
-    for result in cursor:
-        dogNames.append(result['name'])  # can also be accessed using result[0]
-        users.append(result['username'])
-    cursor.close()
-    context_dogNames = dict(data_one = dogNames)
-    context_users = dict(data_two = users)
-        
-    except Exception:
-        error = 'Query Failed'
-    
-    print(context_dogNames)
-    print(context_users)
-   
-    return render_template("addFriend.html", error = error, **context_users, **context_dogNames)
-
-
 @app.route('/signin', methods = ["GET", "POST"]) #<username>
 def signin():
     error = None
@@ -190,6 +169,7 @@ def signin():
             for result in cursor:
                 login.append(result['username'])  # can also be accessed using result[0]
             cursor.close()
+            
         except Exception:
             error = 'Invalid search query'
         if len(login) == 1:
@@ -319,8 +299,11 @@ def dogHome():
             accomodation_list.append(result['description'])
         cursor.close()
         
+        print(len(accomodation_list)
         if len(accomodation_list) == 0:
-            accomodation_list.append('None')
+            accomodation_list.append('Hello')
+            
+        print(accomodation_list)
             
         context_accomodations = dict(data_accomodations = accomodation_list)
         
