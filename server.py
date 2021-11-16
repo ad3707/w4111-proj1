@@ -212,9 +212,14 @@ def addDog():
         profile_picture = request.form['profile_picture']
         bio = request.form['bio']
         sex = request.form['sex']
+        size = request.form['size']
+        build = request.form['build']
+        weight_low = request.form['weight_low']
+        weight_high = request.form['weight_high']
         
         try:
             g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(username, name) VALUES (%s, %s)', username, name)
+            #g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(username, name,breed, birthday, profile_picture, bio, sex, size, build, weight_low, weight_high) VALUES (%s, %s, %s, {:%B %d, %Y}, %s, %s, %s, %s, %s, %d, %d)', username, name,breed, birthday, profile_picture, bio, sex, size, build, weight_low, weight_high)
         except Exception:
             error = 'Invalid name. Name should be at most 11 characters and you cannot have two dogs of the same name'
             
