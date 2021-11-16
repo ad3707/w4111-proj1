@@ -77,25 +77,22 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
 
-
-  
-  <div> 
+ <span> 
     {% for name in data_one %}
-    <span> {{name}} </span>
-    
+    <div> {{name}} </div>
     <div id = "btncontainer">
 <a href="/doginfo?name={{name}}" class="button"> Learn about {{name}} </a>
 </div>
     {% endfor %}
-
-  </div>
+    
+  </span>
   
-  <div> 
+  <span> 
     {% for img in data_two %}
-      <span> <img src = {{img}} height = 150px width = 150px>  </span>
+      <div> <img src = {{img}} height = 150px width = 150px>  </div>
     {% endfor %}
-  </div>
-  
+  </span>
+
   
   
   
