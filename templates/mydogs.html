@@ -68,6 +68,14 @@
     #dogcontainer {
       margin-left: 70px; 
     }
+    
+    #imgcont {
+       background-color: #fad195;
+       box-shadow: 5px 10px #FFE1E1;
+       height: 200px;
+       width: 200px;
+      
+    }
 
 
   </style>
@@ -92,7 +100,7 @@
   
   <div> 
     {% for img in data_two %}
-      <span> <img src = {{img}} height = 150px width = 150px>  </span>
+      <span id = "imgcont"> <img src = {{img}} height = 150px width = 150px>  </span>
     {% endfor %}
   </div>
   </div>
