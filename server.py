@@ -230,8 +230,6 @@ def mydogs():
 def dogHome():
     username = request.args.get('user')
     name = request.args.get('name')
-    username_two = request.args.get('user_two')
-    name_two = request.args.get('name_two')
     error = None
     birthday_list = []
     breed_list = []
@@ -243,37 +241,44 @@ def dogHome():
     build_list = []
     
     #commented out for testing
-   # try:
-      #  cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username_two, name_two)
-       # for result in cursor:
-       #     birthday_list.append(result['birthday'])                            
-        #    breed_list.append(result['breed'])
-        #    sex_list.append(result['sex'])
-         #   profile_picture_list.append(result['profile_picture'])
-         #   bio_list.append(result['bio'])
-         #   since_list.append(result['since'])
-         #   size_list.append(result['size'])
-          #  build_list.append(result['build'])
-       # cursor.close()
-       # birthday = birthday_list[0]
-       # breed = breed_list[0]
-       # sex = sex_list[0]
-       # profile_picture = profile_picture[0]
-        #bio_list
-        
-
-    
     try:
-        cursor = g.conn.execute('SELECT name, profile_picture FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s)', username)
+        cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
         for result in cursor:
-            name_list.append(result['name'])
+            birthday_list.append(result['birthday'])                            
+            breed_list.append(result['breed'])
+            sex_list.append(result['sex'])
             profile_picture_list.append(result['profile_picture'])
+            bio_list.append(result['bio'])
+            since_list.append(result['since'])
+            size_list.append(result['size'])
+            build_list.append(result['build'])
         cursor.close()
-        name = name_list[0]
-        profile_picture = profile_picture_list[0]
+        birthday = birthday_list[0]
+        breed = breed_list[0]
+        sex = sex_list[0]
+        profile_picture = profile_picture[0]
+        bio = bio_list[0]
+        since = since_list[0]
+        sixe = size_list[0]
+        build = build_list[0]
+        
     except Exception:
-        error = 'Invalid'
-    return render_template("dogHome.html")
+        error = 'Unable to collect dog information'
+        
+    activity_list = []    
+    try:
+        cursor = g.conn.execute('SELECT A.description FROM Activities A, Likes_Activity L WHERE L.username = (%s) AND L.name = (%s) AND L.activity_id = A.activity_id', username, name)
+        for result in cursor:
+            activity_list.append(result['description'])
+        cursor.close()
+        
+        context_activity = dict(data_activities = activity_list)
+            
+             
+
+    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture,
+                          bio = bio, since = since, size = size, build = build, **context_activity)
+
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
