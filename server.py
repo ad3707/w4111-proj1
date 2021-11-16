@@ -276,8 +276,7 @@ def dogHome():
             
              
 
-    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture,
-                          bio = bio, since = since, size = size, build = build, **context_activity)
+    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since = since, size = size, build = build, **context_activity)
 
 
 @app.route('/addDog', methods = ["GET", "POST"])
