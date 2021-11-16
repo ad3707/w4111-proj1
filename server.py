@@ -278,11 +278,35 @@ def dogHome():
         context_activity = dict(data_activities = activity_list)
         
     except Exception:
-        error = 'Unable to collect dog activities'        
+        error = 'Unable to collect dog activities'    
+        
+    physique_list = []    
+    try:
+        cursor = g.conn.execute('SELECT P.size, P.build FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
+        for result in cursor:
+            physique_list.append(result['size', 'build'])
+        cursor.close()
+        
+        context_physiques = dict(data_physiques = physique_list)
+        
+    except Exception:
+        error = 'Unable to collect dog physiques' 
+        
+    accomodation_list = []    
+    try:
+        cursor = g.conn.execute('SELECT A.description FROM Accommodations A, Has_Accommodation H WHERE H.username = (%s) AND H.name = (%s) AND H.accomodation_id = A.accomodation_id', username, name)
+        for result in cursor:
+            accomodation_list.append(result['description'])
+        cursor.close()
+        
+        context_accomodation = dict(data_accomodations = accomodation_list)
+        
+    except Exception:
+        error = 'Unable to collect dog accomodations' 
             
              
 
-    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity)
+    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations)
 
 
 @app.route('/addDog', methods = ["GET", "POST"])
