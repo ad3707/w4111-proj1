@@ -62,10 +62,12 @@
    }
 
    #btncontainer {
-     margin: 70px auto 60px;
-
-
+     margin-left: 30px;
    }
+    
+    #dogcontainer {
+      margin-left: 70px; 
+    }
 
 
   </style>
@@ -77,27 +79,26 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
 
- <span> 
+ <div id = "container">
+ <div> 
     {% for name in data_one %}
-    <div> {{name}} </div>
-    <div id = "btncontainer">
+    <span> {{name}} </span>
+    <span id = "btncontainer">
 <a href="/doginfo?name={{name}}" class="button"> Learn about {{name}} </a>
-</div>
+</span>
     {% endfor %}
     
-  </span>
+  </div>
   
-  <span> 
+  <div> 
     {% for img in data_two %}
-      <div> <img src = {{img}} height = 150px width = 150px>  </div>
+      <span> <img src = {{img}} height = 150px width = 150px>  </span>
     {% endfor %}
-  </span>
+  </div>
+  </div>
 
   
-  
-  
  
-  
 </body>
 
  
