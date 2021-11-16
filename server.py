@@ -258,7 +258,7 @@ def dogHome():
         breed = breed_list[0]
         sex = sex_list[0]
         profile_picture = profile_picture [0]
-        bio_list
+        #bio_list
         
 
     
@@ -272,7 +272,7 @@ def dogHome():
         profile_picture = profile_picture_list[0]
     except Exception:
     
-    return render_template("dogHome.html"
+    return render_template("dogHome.html")
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
