@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -86,13 +87,9 @@
  <div> {{context_profile_pictures}} </div>
   <div> 
     {% for img in context_profile_pictures %}
-    <div> <img src = "" + {{img}} + "" > </div>
-    <div> <img src = "{{img}}"> </div>
+    <div> <img src = {{img}}> </div>
     {% endfor %}
   </div>
-  
-   
-
 </body>
 
  
