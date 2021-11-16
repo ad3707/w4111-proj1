@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html>
 
+  <head>
+    <title> Dinder </title>
+  </head>
+
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: 'Copperplate', serif;
+      text-align: center;
+    }
+
+
+    button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #ffcda3;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    #header {
+     background-color: #00d0ff;
+     margin: auto;
+     height: 150px;
+   }
+
+   #form {
+     margin: auto;
+     background-color: #ffe1e1;
+     padding: 20px;
+     height: 600px;
+     width: 800px;
+
+   }
+
+   #inputs {
+     margin-bottom: 30px;
+
+   }
+
+
+  </style>
+
+
+
+<body>
+  <div id = "header">
+  <img src = "/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+  </div>
+
+  <h1>Add Dog</h1>
+  <div id = "form">
+  <form action = "{{url_for("preferences")}}" method = "post">
+    <div id = "inputs">
+      <input type = "text" id = "name" name = "name" placeholder = "Name" required/>
+    </div>
+
+    <div id = "inputs">
+      <input type = "text" id = "breed" name = "breed" placeholder = "Breed" />
+    </div>
+
+    <div id = "inputs">
+      <input type = "date" id = "birthday" name = "birthday" placeholder = "Birthday" />
+      </div>
+
+    <div id = "inputs">
+      <input type = "text" id = "profile_picture" name = "profile_picture" placeholder = "Profile Picture" />
+      </div>
+
+    <div id = "inputs">
+      <input type = "text" id = "bio" name = "bio" placeholder = "Bio" /> <br>
+      </div>
+
+
+    <div id = "inputs">
+      <label> Sex: <input type = "radio" id = "female" name = "sex" value = "female" /> <span>Female </span></label>
+      <label><input type = "radio" id = "male" name = "sex" value = "male" /> <span>Male </span></label>
+    </div>
+      <div id = "inputs">
+        <label> Size: <input type = "radio" id = "xsmall" name = "size" value = "xsmall" /> <span> xsmall </span></label>
+      <label> <input type = "radio" id = "small" name = "size" value = "small" /> <span> small </span></label>
+      <label><input type = "radio" id = "medium" name = "size" value = "medium" /><span> medium </span></label>
+      <label><input type = "radio" id = "large" name = "size" value = "large" /> <span> large </span></label>
+      <label><input type = "radio" id = "xlarge" name = "size" value = "xlarge" /> <span> xlarge </span></label>
+      <label><input type = "radio" id = "xxlarge" name = "size" value = "xxlarge"/> <span> xxlarge </span></label>
+    </div>
+    <div id = "inputs">
+      <label> Build: <input type = "radio" id = "thin" name = "build" value = "thin" /> <span> thin </span></label>
+      <label><input type = "radio" id = "muscular" name = "build" value = "muscular" /> <span> muscular </span></label>
+      <label><input type = "radio" id = "heavy-set" name = "build" value = "heavy-set" /> <span> heavy-set </span></label>
+    </div>
+    <div id = "inputs">
+      <input type = "number" id = "weight_low" name = "weight_low" placeholder = "Weight Low (lbs)" />
+      <input type = "number" id = "weight_high" name = "weight_high" placeholder = "Weight High (lbs)" />
+    </div>
+
+
+    </form>
+    <button type = "submit"> Add </button>
+    </div>
+
+</body>
+
+  <script>
+document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    username = url.searchParams.get("username");
+    name = document.getElementById('name');
+    //location.href =  '/preferences?username=' + username.value + '&name=' + name.value;
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
+</script>
+
+
+
+</html>
