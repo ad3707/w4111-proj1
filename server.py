@@ -194,7 +194,7 @@ def signin():
 def home():
     username = request.args.get('user')
     print(username)
-    error = error
+    error = None
     name_list = []
     profile_picture_list = []
     
