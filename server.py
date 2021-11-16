@@ -285,7 +285,7 @@ def dogHome():
     try:
         cursor = g.conn.execute('SELECT P.size, P.build FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
         for result in cursor:
-            physique_list.append(result['size', 'build'])
+            physique_list.append(result['size'], result['build'])
         cursor.close()
         print(physique_list)
         context_physiques = dict(data_physiques = physique_list)
