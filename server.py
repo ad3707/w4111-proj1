@@ -154,36 +154,6 @@ def welcome():
 # The functions for each app.route need to have different names
 #
 
-@app.route('/addFriend', methods = ["GET","POST"])
-def addFriend():
-    cursor = g.conn.execute('SELECT profile_picture, bio, username, name FROM Dogs_Owned_By_Has_Physique')
-    dogNames = []
-    users = []
-    bios = []
-    dogPics = []
-    for result in cursor:
-        dogNames.append(result['name'])  # can also be accessed using result[0]
-        users.append(result['username'])
-        bios.append(result['bio'])
-        dogPics.append(result['profile_picture'])
-    cursor.close()
-    
-    context_users = dict(data_one = users)
-    context_dogNames = dict(data_two = dogNames)
-    context_bios = dict(data_three = bios)
-    context_dogPics = dict(data_four = dogPics)
-    
-        
-    except Exception:
-        error = 'Query Failed'
-    
-    print(context_dogNames)
-    print(context_users)
-    print(context_bios)
-    print(context_dogPics)
-   
-    return render_template("addFriend.html", error = error, **context_users, **context_dogNames, **context_bio, **context_dogPics)
-
 @app.route('/signin', methods = ["GET", "POST"]) #<username>
 def signin():
     error = None
@@ -313,10 +283,11 @@ def dogHome():
         
     physique_list = []    
     try:
-        cursor = g.conn.execute('SELECT P.size, P.build FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
+        cursor = g.conn.execute('SELECT P.size FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
         for result in cursor:
-            physique_list.append(result['size', 'build'])
+            physique_list.append(result['size'])
         cursor.close()
+        print(physique_list)
         context_physiques = dict(data_physiques = physique_list)
         
     except Exception:
