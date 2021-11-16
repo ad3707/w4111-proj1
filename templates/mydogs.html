@@ -109,7 +109,7 @@
     {% for i in range(data_one|length) %}
     <span id = "box"> <img src = {{ data_two[i] }} id = "imglay"> 
       <h2> {{ data_one[i] }} </h2>
-      <a href="/dogHome?name={{ data_one[i] }}" class="button"> Learn about {{ data_one[i] }} </a>  
+      <a href="/dogHome?user={{ user }}&name={{ data_one[i] }}" class="button"> Learn about {{ data_one[i] }} </a>  
     </span>
     {% endfor %}
    </div>
