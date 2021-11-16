@@ -225,8 +225,8 @@ def mydogs():
             profile_pictures.append(result['profile_picture'])
         cursor.close()
         
-        context_names = dict(data = names)
-        context_profile_pictures = dict(data = profile_pictures)
+        context_names = dict(data_one = names)
+        context_profile_pictures = dict(data_two = profile_pictures)
         
     except Exception:
         error = 'Query Failed'
