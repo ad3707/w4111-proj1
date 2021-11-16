@@ -219,10 +219,73 @@ def addDog():
         
         try:
             g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(username, name) VALUES (%s, %s)', username, name)
-            #g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(username, name,breed, birthday, profile_picture, bio, sex, size, build, weight_low, weight_high) VALUES (%s, %s, %s, {:%B %d, %Y}, %s, %s, %s, %s, %s, %d, %d)', username, name,breed, birthday, profile_picture, bio, sex, size, build, weight_low, weight_high)
         except Exception:
             error = 'Invalid name. Name should be at most 11 characters and you cannot have two dogs of the same name'
-            
+        
+        if error is None and breed:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET breed = (%s) WHERE username = (%s) AND name = (%s)', breed, username,name)
+            except Exception:
+                error = 'Invalid breed. Number mmust be 11 characters or less. Try again'
+        if error is None and birthday:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET birthday = ({:%B %d, %Y}) WHERE username = (%s) AND name = (%s)', birthday, username,name)
+            except Exception:
+                error = 'Invalid breed. Number mmust be 11 characters or less. Try again'
+        if error is None and profile_picture:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET profile_picture = (%s) WHERE username = (%s) AND name = (%s)', profile_picture, username,name)
+            except Exception:
+                error = 'Invalid birthday. Number mmust be 11 characters or less. Try again'
+        if error is None and profile_picture:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET profile_picture = (%s) WHERE username = (%s) AND name = (%s)', profile_picture, username,name)
+            except Exception:
+                error = 'Invalid birthday. Number mmust be 11 characters or less. Try again'
+        if error is None and bio:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET bio = (%s) WHERE username = (%s) AND name = (%s)', bio, username,name)
+            except Exception:
+                error = 'Invalid bio. Number mmust be 50 characters or less. Try again'
+        if error is None and sex:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET sex = (%s) WHERE username = (%s) AND name = (%s)', sex, username,name)
+            except Exception:
+                error = 'Invalid sex. Number mmust be 50 characters or less. Try again'
+        if error is None and size:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET size = (%s) WHERE username = (%s) AND name = (%s)', size, username,name)
+            except Exception:
+                error = 'Invalid size. Number mmust be 50 characters or less. Try again'
+        if error is None and build:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET build = (%s) WHERE username = (%s) AND name = (%s)', build, username,name)
+            except Exception:
+                error = 'Invalid size. Number mmust be 50 characters or less. Try again'
+        
+        login = []
+        try: 
+            cursor = g.conn.execute('SELECT * FROM Physique WHERE size = (%s) AND build = (%s) AND weight_low = (%d) AND weight_high = (%d)', size, build, weight_low, weight_high)
+            for result in cursor:
+                login.append(result['*'])  # can also be accessed using result[0]
+            cursor.close()
+        except Exception:
+            error = 'Invalid search query'
+        if len(login) != 1:
+            error = 'Invalid range'
+        
+        
+        if error is None and weight_low:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET weight_low = (%d) WHERE username = (%s) AND name = (%s)', weight_low,size, username,name)
+            except Exception:
+                error = 'Invalid weight_low. Number mmust be 50 characters or less. Try again'
+        if error is None and weight_high:
+            try:
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET weight_high = (%d) WHERE username = (%s) AND name = (%s)', weight_high,size, username,name)
+            except Exception:
+                error = 'Invalid weight_high. Number mmust be 50 characters or less. Try again'
+                
         if error is None: 
             return redirect(url_for('mydogs',user = username))
             
