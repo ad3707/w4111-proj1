@@ -76,31 +76,25 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
 
-<div id = "profilecontainer>
-           context_names
-           <title>Hello World</title>
-{% if name %}
- <h1>Hello {{name}}</h1>
-           
-           context_profilepictures
-          
-           
-      
-      <img src =     
-           
-           
-           </div>
+  <div> {{context_names}} </div>
+  <div> 
+    {% for name in context_names %}
+    <div> {{name}} </div>
+    {% endfor %}
+  </div>
+       
+ <div> {{context_profile_pictures}} </div>
+  <div> 
+    {% for img in context_profile_pictures %}
+    <div> <img src = "" + {{img}} + "" > </div>
+    <div> <img src = "{{img}}"> </div>
+    {% endfor %}
+  </div>
+  
+   
 
 </body>
 
-<script>
-           $(document.ready(function() {
-           
-           
-           
-           }
-           
-           
-            </script>
+
 
 </html>
