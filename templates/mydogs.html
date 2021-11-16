@@ -99,7 +99,16 @@
   </div>
 
  <div id = "container">
- <div> 
+ 
+  
+  <div> 
+    {% for img in data_two %}
+      <span id = "box"> <img src = {{img}} id = "imglay" height = 200px width = 200px>  </span>
+    {% endfor %}
+  </div>
+   
+   
+   <div> 
     {% for name in data_one %}
     <span> {{name}} </span>
     <span id = "btncontainer">
@@ -108,12 +117,7 @@
     {% endfor %}
     
   </div>
-  
-  <div> 
-    {% for img in data_two %}
-      <span id = "box"> <img src = {{img}} id = "imglay" height = 200px width = 200px>  </span>
-    {% endfor %}
-  </div>
+   
   </div>
 
   
