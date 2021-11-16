@@ -88,21 +88,43 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
   <h2>Welcome, {{ user }} !</h2>
+  
+  <img src = "{{profile_picture}}" >
+  <img src = "" + {{profile_picture}} + "">
+  
+  
 
 
 <div id = "signin">
 
 <div id = "btncontainer">
 <a href="mydogs" class="button"> My Dogs</a>
+  
 </div>
 
 <div id = "btncontainer">
 <a href="signin" class="button"> Sign In </a>
 </div>
+  
+  
+  
 
 </div>
 
 </body>
 
+  <script>
+document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    user = url.searchParams.get("user");
+    location.href =  '/mydogs?user=' + user.value;
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
+    
+    
+
+</script>
 
 </html>
