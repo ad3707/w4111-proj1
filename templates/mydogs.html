@@ -106,7 +106,7 @@
     {% for img in data_two %}
     <div> <img src = {{img}} height = 150px width = 150px>  </div>
     {% endfor %}
-  </div> -->
+  </div> 
   
   <div>
   {% for name in data_one, img in data_two in data_one|zip(data_two) %}
@@ -122,7 +122,7 @@
     <div> {{name}} </div>
     <div> <img src = {{img}} height = 150px width = 150px>  </div>
   {% endfor %}
-  </div>
+  </div> --> 
  
   
 </body>
