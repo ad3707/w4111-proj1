@@ -236,7 +236,7 @@ def dogHome():
     sex_list = []
     profile_picture_list = []
     bio_list = []
-    since_list = []
+    since_joined_list = []
     size_list = []
     build_list = []
     
@@ -249,7 +249,7 @@ def dogHome():
             sex_list.append(result['sex'])
             profile_picture_list.append(result['profile_picture'])
             bio_list.append(result['bio'])
-            since_list.append(result['since'])
+            since_joined_list.append(result['since'])
             size_list.append(result['size'])
             build_list.append(result['build'])
         cursor.close()
@@ -258,8 +258,8 @@ def dogHome():
         sex = sex_list[0]
         profile_picture = profile_picture[0]
         bio = bio_list[0]
-        since = since_list[0]
-        sixe = size_list[0]
+        since_joined = since_joined_list[0]
+        size = size_list[0]
         build = build_list[0]
         
     except Exception:
@@ -276,7 +276,7 @@ def dogHome():
             
              
 
-    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since = since, size = size, build = build, **context_activity)
+    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity)
 
 
 @app.route('/addDog', methods = ["GET", "POST"])
