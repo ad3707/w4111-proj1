@@ -38,6 +38,7 @@
    #btncontainer {
      margin: auto;
      margin-top: 30px;
+     float: left;
    }
     
 #menu{
@@ -72,22 +73,22 @@
   <h2> Welcome, {{ user }} ! </h2>
   
   
-  <img src = {{ profile_picture }} id = "profilecont" height = 150px width = 150px >
+  <img src = {{ profile_picture }} id = "profilecont" height = 125px width = 125px >
 
   
 <div id = "menu">
 
-<div id = "btncontainer">
+<span id = "btncontainer">
 <a href="/mydogs?user={{user}}" class="button"> My Dogs </a>
-</div>
+</span>
   
-  <div id = "btncontainer">
+  <span id = "btncontainer">
 <a href="/mydogs?user={{user}}" class="button"> Matches </a>
-</div>
+</span>
   
-  <div id = "btncontainer">
+  <span id = "btncontainer">
 <a href="/mydogs?user={{user}}" class="button"> Your Contact Info </a>
-</div>
+</span>
   
  
 </div>
