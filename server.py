@@ -281,14 +281,17 @@ def dogHome():
     except Exception:
         error = 'Unable to collect dog activities'    
         
-    physique_list = []    
+    physique_list = []
+    build_list = []
     try:
         cursor = g.conn.execute('SELECT P.size, P.build FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
         for result in cursor:
-            physique_list.append(result['size'], result['build'])
+            physique_list.append(result['size'])
+            build_list.append(result['build'])
         cursor.close()
         print(physique_list)
         context_physiques = dict(data_physiques = physique_list)
+        context_builds = dict(data_buils = build_list)
         
     except Exception:
         error = 'Unable to collect dog physiques' 
@@ -300,21 +303,35 @@ def dogHome():
             accomodation_list.append(result['description'])
         cursor.close()
         
-        print(len(accomodation_list))
               
         if len(accomodation_list) == 0:
             accomodation_list.append('None')
             
-        print(accomodation_list)
             
         context_accomodations = dict(data_accomodations = accomodation_list)
         
     except Exception:
         error = 'Unable to collect dog accomodations' 
+        
+        
+    likes_name_list = []
+    likes_username_list = []
+    try:
+        cursor = g.conn.execute('SELECT L.username_is_liked_by, L.name_is_liked_by FROM Likes_Dog L WHERE L.username_likes = (%s) AND L.name_likes = (%s)', username, name)
+        for result in cursor:
+            likes_name_list.append(result['name_is_liked_by'])
+            likes_username_list.append(result['username_is_liked_by'])
+        cursor.close()
+
+        context_likes_name = dict(data_likes_name = likes_name_list)
+        context_likes_username = dict(data_likes_username = likes_username_list)
+        
+    except Exception:
+        error = 'Unable to collect dog likes' 
             
              
 
-    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations)
+    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
 
 @app.route('/addDog', methods = ["GET", "POST"])
