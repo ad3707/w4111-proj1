@@ -51,7 +51,7 @@
 
 <body>
  <div id = "header">
-   <img src="logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+   <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
  </div>
 
  <h2>Create An Account</h2>
@@ -78,7 +78,6 @@ document.getElementById('button').onclick = function() {
     var a = document.createElement('a');
     a.target = '_blank';
     username = document.getElementById('username');
-    //a.href = '/signup2?username=' + username.value;
     //location.href =  '/signup2?username=' + username.value;
     var container = document.getElementById('form');
     container.appendChild(a);
