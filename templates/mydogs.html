@@ -79,6 +79,12 @@
        margin-left: 70px;
       
     }
+    
+    #imglay {
+      margin: auto; 
+      
+    }
+    
 
 
   </style>
@@ -103,7 +109,7 @@
   
   <div> 
     {% for img in data_two %}
-      <span id = "box"> <img src = {{img}} height = 150px width = 150px>  </span>
+      <span id = "box"> <img src = {{img}} id = "imglay" height = 200px width = 200px>  </span>
     {% endfor %}
   </div>
   </div>
