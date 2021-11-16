@@ -242,22 +242,22 @@ def dogHome():
     size_list = []
     build_list = []
     
-    try:
-        cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username_two, name_two)
-        for result in cursor:
-            birthday_list.append(result['birthday'])                            
-            breed_list.append(result['breed'])
-            sex_list.append(result['sex'])
-            profile_picture_list.append(result['profile_picture'])
-            bio_list.append(result['bio'])
-            since_list.append(result['since'])
-            size_list.append(result['size'])
-            build_list.append(result['build'])
-        cursor.close()
-        birthday = birthday_list[0]
-        breed = breed_list[0]
-        sex = sex_list[0]
-        profile_picture = profile_picture[0]
+   # try:
+      #  cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username_two, name_two)
+       # for result in cursor:
+       #     birthday_list.append(result['birthday'])                            
+        #    breed_list.append(result['breed'])
+        #    sex_list.append(result['sex'])
+         #   profile_picture_list.append(result['profile_picture'])
+         #   bio_list.append(result['bio'])
+         #   since_list.append(result['since'])
+         #   size_list.append(result['size'])
+          #  build_list.append(result['build'])
+       # cursor.close()
+       # birthday = birthday_list[0]
+       # breed = breed_list[0]
+       # sex = sex_list[0]
+       # profile_picture = profile_picture[0]
         #bio_list
         
 
