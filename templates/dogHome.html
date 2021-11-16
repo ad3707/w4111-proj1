@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+<title> Dinder </title>
+</head>
+
+  <style>
+
+    body{
+      font-size: 15pt;
+      font-family: 'Copperplate', serif;
+      text-align: center;
+    }
+
+    .button {
+    width: 115px;
+    height: 25px;
+    background: #C4C4C4;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    margin-top: 100px;
+    text-decoration:none;
+    box-shadow: 4px 5px #878787;
+}
+
+
+    #header {
+     background-color: #00d0ff;
+     margin: auto;
+     height: 150px;
+   }
+
+
+   #btncontainer {
+     margin-right: 50px;
+     margin-top: 80px;
+   }
+    
+#menu{
+ background-color: #FFE1E1;
+ margin-top: 150px;
+ margin:auto;
+ height: 50px;
+ width: 650px;
+ padding: 20px;
+ border-radius: 10px;
+ box-shadow: 4px 5px #ffcfcf;
+}
+    
+   #profilecont {
+     background-color: #fad195;
+     height: 250px;
+     width: 250px;
+     margin: auto;
+     margin-top: 30px;
+     margin-bottom:30px;
+     border-radius: 100%;
+   }
+    
+  </style>
+
+
+<body>
+
+  <div id = "header">
+    <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+  </div>
+  
+  <h2> Welcome, {{ user }} ! </h2>
+  
+  
+  <img src = {{ profile_picture }} id = "profilecont" >
+
+  
+<div id = "menu">
+
+<span id = "btncontainer">
+<a href="/mydogs?user={{user}}" class="button"> My Dogs </a>
+</span>
+  
+  <span id = "btncontainer">
+<a href="/mydogs?user={{user}}" class="button"> Matches </a>
+</span>
+  
+  <span id = "btncontainer">
+<a href="/mydogs?user={{user}}" class="button"> Your Contact Info </a>
+</span>
+  
+ 
+</div>
+
+</body>
+
+    
+    
+
+</script>
+
+</html>
