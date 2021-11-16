@@ -45,7 +45,7 @@
      height: 300px;
      width: 300px;
      float:left;
-     margin-left: 5px;
+     margin-left: 39px;
      margin-top: 70px;
      margin-bottom: 0px;
      text-align: center;
@@ -139,24 +139,33 @@
 <span id = "box">
   <h3> Some Activities I enjoy: </h3>
   <p> 
-    <div>
+     
       {% for activity in data_activities %}
-      <div> {{ activity }} <div>
+      <div> {{ activity }} </div>
         {%endfor%}
-        </div>
+        
   </p>
 </span>
 
 
   <span id = "box">
     <h3> Dog Types I play well with: </h3>
-    <p> Your dog makes new friends and can have playdates with them! </p>
+    <p>    {% for physique in data_physiques %}
+      <div> {{ physique }} </div>
+        {%endfor%} </p>
 </span>
 
     <span id = "box">
     <h3> Any Accomodations I may Have: </h3>
-    <p> Your dog makes new friends and can have playdates with them! </p>
+    <p>    {% for accomodation in data_accomodations %}
+      <div> {{ accomodation }} </div>
+        {%endfor%} </p>
   </span>
+
+  <span id = "box">
+    <h3> Dogs I am friends with!: </h3>
+    <p> Your dog makes new friends and can have playdates with them! </p>
+</span>
 
 
 </div>
