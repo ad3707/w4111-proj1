@@ -104,7 +104,7 @@
  
   
   <div> 
-    {% for i in range {{ data_one }}|length %}
+    {% for i in range({{ data_one }}|length) %}
     <span id = "box"> <img src = {{ data_one[i] }} id = "imglay" height = 200px width = 200px> 
       {{ data_two[i] }}
       <a href="/dogHome?name={{name}}" class="button"> Learn about {{ data_two[i] }} </a>  
