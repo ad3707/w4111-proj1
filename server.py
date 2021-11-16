@@ -230,6 +230,9 @@ def mydogs():
 def dogHome():
     username = request.args.get('user')
     name = request.args.get('name')
+    print(username)
+    print(name)
+    
     error = None
     birthday_list = []
     breed_list = []
@@ -240,7 +243,6 @@ def dogHome():
     size_list = []
     build_list = []
     
-    #commented out for testing
     try:
         cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
         for result in cursor:
@@ -254,6 +256,7 @@ def dogHome():
             build_list.append(result['build'])
         cursor.close()
         birthday = birthday_list[0]
+        print(birthday)
         breed = breed_list[0]
         sex = sex_list[0]
         profile_picture = profile_picture[0]
