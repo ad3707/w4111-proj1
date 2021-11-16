@@ -242,6 +242,7 @@ def dogHome():
     size_list = []
     build_list = []
     
+    #commented out for testing
    # try:
       #  cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username_two, name_two)
        # for result in cursor:
@@ -271,7 +272,7 @@ def dogHome():
         name = name_list[0]
         profile_picture = profile_picture_list[0]
     except Exception:
-    
+        error = 'Invalid'
     return render_template("dogHome.html")
 
 @app.route('/addDog', methods = ["GET", "POST"])
