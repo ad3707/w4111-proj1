@@ -94,35 +94,22 @@
   </div>
   
   
-  <!-- <div> 
+  
+  <span> 
     {% for name in data_one %}
     <div> {{name}} </div>
+    <button type="submit" > Click for more info about {{name}}</button>
     {% endfor %}
     
-  </div>
-       
-
-  <div> 
+  </span>
+  
+  <span> 
     {% for img in data_two %}
-    <div> <img src = {{img}} height = 150px width = 150px>  </div>
+      <div> <img src = {{img}} height = 150px width = 150px>  </div>
     {% endfor %}
-  </div> 
+  </span>
   
-  <div>
-  {% for name in data_one, img in data_two in data_one|zip(data_two) %}
-    {{ name }} is paired with {{ img }}
-    <div> {{name}} </div>
-    <div> <img src = {{img}} height = 150px width = 150px>  </div>
-  {% endfor %}
-  </div>
   
-  <div>
-  {% for name in data_one, img in data_two in data_one|zip(data_two) %}
-    {{ data_one }} is paired with {{ data_two }}
-    <div> {{name}} </div>
-    <div> <img src = {{img}} height = 150px width = 150px>  </div>
-  {% endfor %}
-  </div> --> 
  
   
 </body>
