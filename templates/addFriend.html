@@ -40,8 +40,8 @@
 
    #box {
      background-color: #fad195;
-     height: 380px;
-     width: 270px;
+     height: 400px;
+     width: 300px;
      float:left;
      margin-left: 50px;
      margin-top: 50px;
@@ -106,16 +106,16 @@
  
   
   <div> 
-    {% for i in range(data_one|length) %}
-    <span id = "box"> <img src = {{ data_two[i] }} id = "imglay"> 
-      <h2> {{ data_one[i] }} </h2>
+    {% for i in range(data_three|length) %}
+    <span id = "box"> <img src = {{ data_three[i] }} id = "imglay"> 
+      <h2> {{ data_two[i] }} </h2>
+      <h2> {{ data_four[i] }} </h2>
+      <h2> Owner: {{ data_one[i] }} </h2>
       <a href="/dogHome?name={{ data_two[i] }}" class="button"> Learn about {{ data_two[i] }} </a>  
     </span>
     {% endfor %}
    </div>
-   
   
-   
   </div>
 
 
