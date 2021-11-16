@@ -104,10 +104,10 @@
  
   
   <div> 
-    {% for img in data_two %}
-    <span id = "box"> <img src = {{img}} id = "imglay" height = 200px width = 200px> 
-      {{data_one[img]}}
-      <a href="/dogHome?name={{name}}" class="button"> Learn about  </a>  
+    {% for i in range(len(data_one)) %}
+    <span id = "box"> <img src = {{ data_one[i] }} id = "imglay" height = 200px width = 200px> 
+      {{ data_two[i] }}
+      <a href="/dogHome?name={{name}}" class="button"> Learn about {{ data_two[i] }} </a>  
     </span>
     {% endfor %}
    </div>
