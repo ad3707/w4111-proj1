@@ -259,7 +259,7 @@ def dogHome():
         print(birthday)
         breed = breed_list[0]
         sex = sex_list[0]
-        profile_picture = profile_picture[0]
+        profile_picture = profile_picture_list[0]
         bio = bio_list[0]
         since_joined = since_joined_list[0]
         size = size_list[0]
