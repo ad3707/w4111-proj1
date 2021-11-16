@@ -257,7 +257,7 @@ def dogHome():
         birthday = birthday_list[0]
         breed = breed_list[0]
         sex = sex_list[0]
-        profile_picture = profile_picture [0]
+        profile_picture = profile_picture[0]
         #bio_list
         
 
