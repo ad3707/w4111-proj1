@@ -286,7 +286,6 @@ def dogHome():
         for result in cursor:
             physique_list.append(result['size', 'build'])
         cursor.close()
-        
         context_physiques = dict(data_physiques = physique_list)
         
     except Exception:
@@ -299,6 +298,9 @@ def dogHome():
             accomodation_list.append(result['description'])
         cursor.close()
         
+        if len(accomodation_list) == 0:
+            accomodation_list.append('None')
+            
         context_accomodations = dict(data_accomodations = accomodation_list)
         
     except Exception:
