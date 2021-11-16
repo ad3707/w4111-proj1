@@ -82,9 +82,12 @@
   <div> 
     {% for name in data_one %}
     <span> {{name}} </span>
-    <button type="submit" > Click for more info about {{name}}</button>
-    {% endfor %}
     
+    <div id = "btncontainer">
+<a href="/doginfo?name={{name}}" class="button"> Learn about {{name}} </a>
+</div>
+    {% endfor %}
+
   </div>
   
   <div> 
@@ -94,20 +97,6 @@
   </div>
   
   
-  
-  <span> 
-    {% for name in data_one %}
-    <div> {{name}} </div>
-    <button type="submit" > Click for more info about {{name}}</button>
-    {% endfor %}
-    
-  </span>
-  
-  <span> 
-    {% for img in data_two %}
-      <div> <img src = {{img}} height = 150px width = 150px>  </div>
-    {% endfor %}
-  </span>
   
   
  
