@@ -77,16 +77,16 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
 
-  <div> {{context_names}} </div>
+  <div> {{data_one}} </div>
   <div> 
-    {% for name in context_names %}
+    {% for name in data_one %}
     <div> {{name}} </div>
     {% endfor %}
   </div>
        
- <div> {{context_profile_pictures}} </div>
+ <div> {{data_two}} </div>
   <div> 
-    {% for img in context_profile_pictures %}
+    {% for img in data_two %}
     <div> <img src = {{img}}> </div>
     {% endfor %}
   </div>
