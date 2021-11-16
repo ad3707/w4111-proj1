@@ -230,6 +230,10 @@ def mydogs():
         
     except Exception:
         error = 'Query Failed'
+    
+    print(username)
+    print(context_names)
+    print(context_profile_pictures)
    
     return render_template("mydogs.html", error = error, **context_names, **context_profile_pictures, user = username)
 
