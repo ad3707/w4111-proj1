@@ -152,7 +152,11 @@
     <h3> Dog Types I play well with: </h3>
     <p>    {% for physique in data_physiques %}
       <div> {{ physique }} </div>
-        {%endfor%} </p>
+        {%endfor%} 
+        {% for build in data_buils %}
+      <div> {{ build }} </div>
+        {%endfor%} 
+    </p>
 </span>
 
     <span id = "box">
@@ -164,7 +168,13 @@
 
   <span id = "box">
     <h3> Dogs I am friends with!: </h3>
-    <p> Your dog makes new friends and can have playdates with them! </p>
+    <p>    {% for name in data_likes_name %}
+      <div> {{ name }} </div>
+        {%endfor%} 
+        {% for username in data_likes_username %}
+      <div> {{ username }} </div>
+        {%endfor%} 
+    </p>
 </span>
 
 
