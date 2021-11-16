@@ -283,9 +283,9 @@ def dogHome():
         
     physique_list = []    
     try:
-        cursor = g.conn.execute('SELECT P.size FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
+        cursor = g.conn.execute('SELECT P.size, P.build FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
         for result in cursor:
-            physique_list.append(result['size'])
+            physique_list.append(result['size', 'build'])
         cursor.close()
         print(physique_list)
         context_physiques = dict(data_physiques = physique_list)
@@ -303,7 +303,7 @@ def dogHome():
         print(len(accomodation_list))
               
         if len(accomodation_list) == 0:
-            accomodation_list.append('Hello')
+            accomodation_list.append('None')
             
         print(accomodation_list)
             
