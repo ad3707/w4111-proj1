@@ -299,7 +299,8 @@ def dogHome():
             accomodation_list.append(result['description'])
         cursor.close()
         
-        print(len(accomodation_list)
+        print(len(accomodation_list))
+              
         if len(accomodation_list) == 0:
             accomodation_list.append('Hello')
             
