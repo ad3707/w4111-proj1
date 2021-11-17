@@ -337,7 +337,9 @@ def dogHome():
 def search():
         
     username = request.args.get('user')
-    if request.method == "GET":
+    
+    if request.method == "POST":
+        username = request.form['user']
         city = request.form['city']
         state = request.form['state']
         size = request.form['size']
@@ -350,7 +352,7 @@ def search():
         
         return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
    
-    return render_template("search.html")
+    return render_template("search.html", user = username)
     
 @app.route('/addFriend', methods = ["GET", "POST"])
 def addFriend():
