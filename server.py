@@ -555,13 +555,13 @@ def search():
         state = request.form['state']
         size = request.form['size']
         build = request.form['build']
-        #activity = request.form['activity']
+        activity = request.form['activity']
         username_two = request.form['user_two']
         email = request.form['email']
         print(username)
         print(username_two)
         
-        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, user2 = username_two, email = email))
+        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user2 = username_two, email = email))
    
     return render_template("search.html", user = username)
     
@@ -750,7 +750,7 @@ def addFriend():
         context_bios = dict(data_four = bios)
         error = 'Invalid Search. Search by city and state, or by size and build, or by activity'
         
-    return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, ** context_profile_pictures, **context_bios)        
+    return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, **context_profile_pictures, **context_bios)        
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
