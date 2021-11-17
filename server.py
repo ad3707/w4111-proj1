@@ -484,14 +484,15 @@ def dogHome2():
     try:
         cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
         for result in cursor:
-			birthday_list.append(str(result['birthday']))
-			breed_list.append(result['breed'])
-			sex_list.append(result['sex'])
-			profile_picture_list.append(result['profile_picture'])
-			bio_list.append(result['bio'])
-			since_joined_list.append(result['since'])
-			size_list.append(result['size'])
-			build_list.append(result['build'])
+          birthday_list.append(str(result['birthday']))
+          breed_list.append(result['breed'])
+          sex_list.append(result['sex'])
+          profile_picture_list.append(result['profile_picture'])
+          bio_list.append(result['bio'])
+          since_joined_list.append(result['since'])
+          size_list.append(result['size'])
+          build_list.append(result['build'])
+          
         cursor.close()
         birthday = birthday_list[0]
         print(birthday)
