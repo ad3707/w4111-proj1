@@ -495,9 +495,7 @@ def dogHome2():
           
         cursor.close()
         birthday = str(birthday_list[0])
-	print(birthday_list[0])
         print(birthday)
-	print('hllo')
         breed = breed_list[0]
         sex = sex_list[0]
         profile_picture = profile_picture_list[0]
