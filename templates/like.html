@@ -3,18 +3,26 @@
  <style>
    body{
      font-size: 15pt;
-     font-family: Sanchez;
+     font-family: 'Copperplate', serif;
      text-align: center;
    }
 
-   button {
-     width: 150px;
-     padding: 10px;
-     border: none;
-     border-radius: 5px;
-     background: #ffcda3;
-     font-size: 16px;
-   }
+   #button {
+    width: 120px;
+    height: 35px;
+    background: #C4C4C4;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    margin-top: 50px;
+    text-decoration:none;
+    box-shadow: 4px 5px #878787;
+    font-size: 15px;
+    font-family: 'Copperplate', serif;
+    
+}
   
    #btncontainer {
      margin-top: 60px;
@@ -22,11 +30,17 @@
      text-align: center;
      float: right; 
    }
-
+   
+   #topbtncontainer {
+     margin-top: 80px;
+     margin-right: 30px;
+     text-align: center;
+     float:right;
+   }
+   
    #header {
      background-color: #00d0ff;
      margin: auto;
-     font-family: Helvetica;
      height: 150px;
    }
 
@@ -36,10 +50,13 @@
      padding: 20px;
      height: 200px;
      width: 300px;
+     border-style: ridge;
+     border-width: 5px;
+     border-color: #fad195;
    }
 
    #inputs {
-     margin-bottom: 30px;
+     margin-top: 30px;
    }
 
  </style>
@@ -56,11 +73,11 @@
 <body>
  <div id = "header">
    <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
-  <span id = "btncontainer">
-  <a href="/home?user={{ user }}" class="button"> Home </a>   
+  <span id = "topbtncontainer">
+  <a href="/home?user={{ user }}" class="button" id = "button"> Home </a>   
      </span>
-  <span id = "btncontainer">
-  <a href="/" class="button"> Log out </a> 
+  <span id = "topbtncontainer">
+  <a href="/" class="button" id = "button"> Log out </a> 
   </span>
  </div>
 
@@ -80,7 +97,7 @@
    </div>
   
    
- <input type = "submit" value = "Submit"></input>
+ <input type = "submit" value = "Submit" id = "button"></input>
   
  </form>
 
