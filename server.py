@@ -743,8 +743,9 @@ def addFriend():
             error = 'Search query failed'
                 
     elif len(activity) == 0 and len(size) == 0 and len(build) == 0 and len(city) == 0 and len(state) == 0:
-        cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_pic FROM Dogs_Owned_By_Has_Physique D')
-        
+        try:
+            cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_pic FROM Dogs_Owned_By_Has_Physique D')
+            for result in cursor:
                 users_two.append(result['username'])
                 names.append(result['name'])
                 bios.append(result['bio'])
