@@ -819,7 +819,7 @@ def addDog():
         build = request.form['build']
         
         try:
-            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, birthday, breed, sex, profile_picture, bio, since, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', name, birthday, breed, sex, profile_picture, bio, since, username, size, build)
+            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, breed, sex, profile_picture, bio, since, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)', name, birthday, breed, sex, profile_picture, bio, since, username, size, build)
             
         except Exception:
             error = 'Invalid entry. Please note you cannot have two dogs of the same name. Please check your formatting. Inputs may be too long.'
