@@ -64,10 +64,10 @@
     
     #box {
      background-color: #fad195;
-     height: 380px;
-     width: 270px;
+     height: 400px;
+     width: 300px;
      float:left;
-     margin-left: 50px;
+     margin-left: auto;
      margin-top: 50px;
      margin-bottom: 0px;
      text-align: center;
@@ -75,6 +75,20 @@
      box-shadow: 5px 10px #FFE1E1;
 
    }
+    
+    #schedule {
+     background-color: #fad195;
+     height: 380px;
+     width: 270px;
+     float:left;
+     margin-left: auto;
+     margin-top: 50px;
+     margin-bottom:10px;
+     text-align: center;
+     border-radius: 10px;
+     box-shadow: 5px 10px #FFE1E1;
+    }
+    
   </style>
 
 
@@ -90,6 +104,7 @@
   
   <img src = {{ profile_picture }} id = "profilecont" >
 
+  <div id = "box"> 
   <h3> You will travel {{mile_radius}} miles </h3>
   <h3> You will carpool: {{will_carpool}} </h3>
   <h3> You have a backyard: {{has_backyard}}  </h3>
@@ -98,13 +113,15 @@
   <h3> You allow dropoffs: {{allows_dropoffs}}  </h3>
   
   <h3> Your current address is {{street_address}} {{city}} {{state}} {{zip}}  </h3> 
-  <div> 
+  
+  </div>
+  
+   <div id =  "schedule"> 
+     <h2> Your Schedule </h2>
     {% for i in range(free_day|length) %}
-    <div id = "box"> 
       <h2> You are free: {{ free_day[i] }} </h2>
       <h2> Start time: {{ free_time_start[i] }} </h2>
       <h2> End Time: {{ free_time_end[i] }} </h2>
-    </div>
     {% endfor %}
    </div>
   
