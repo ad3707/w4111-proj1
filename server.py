@@ -725,6 +725,7 @@ def addFriend():
                 
     elif len(activity) != 0:
         try:
+            print(activity)
             cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Activities AC WHERE AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name', activity)
             
             for result in cursor:
