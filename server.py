@@ -203,6 +203,8 @@ def home():
     has_children_list = []
     has_other_pets_list = []
     allows_dropoffs = []
+    
+    print(FUCK)
     try:
         print(helllo)
         cursor = g.conn.execute('SELECT has_backyard, has_children, has_other_pets, allows_dropoffs FROM Will_Host WHERE username = (%s)', username)
