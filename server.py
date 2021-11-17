@@ -350,13 +350,13 @@ def search():
         state = request.form['state']
         size = request.form['size']
         build = request.form['build']
-        activity = request.form['activity']
+        #activity = request.form['activity']
         username_two = request.form['user_two']
         email = request.form['email']
         print(username)
         print(username_two)
         
-        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
+        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, user_two = username_two, email = email))
    
     return render_template("search.html", user = username)
     
