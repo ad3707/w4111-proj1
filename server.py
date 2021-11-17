@@ -369,6 +369,7 @@ def addFriend():
     size = request.args.get('size')
     build = request.args.get('size')
     activity = request.args.get('activity')
+    activity = ""
     username_two = request.args.get('user_two')
     email = request.args.get('email')
     error = None
