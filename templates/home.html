@@ -75,13 +75,28 @@
   
   <img src = {{ profile_picture }} id = "profilecont" >
 
-  <h3> You will {{ }} </h3>
-  <h3> Your current address is {{street_address}} </h3> 
+  <h3> You will travel {{mile_radius}} miles </h3>
+  <h3> You will carpool: {{will_carpool}} </h3>
+  <h3> You have a backyard: {{has_backyard}}  </h3>
+  <h3> You have kids: {{has_children}} </h3>
+  <h3> You have other pets: {{has_other_pets}} </h3>
+  <h3> You allow dropoffs: {{allows_dropoffs}}  </h3>
+  
+  <h3> Your current address is {{street_address}} {{zip}} </h3> 
 <div id = "menu">
 
 <span id = "btncontainer">
 <a href="/mydogs?user={{user}}" class="button"> My Dogs </a>
 </span>
+  
+
+  free_day VARCHAR(10),
+free_time_start TIME,
+free_time_end TIME,
+
+
+
+  
   
   <span id = "btncontainer">
 <a href="/addDog?user={{user}}" class="button"> Add Dog </a>
