@@ -49,6 +49,11 @@
    <div id = "header"> 
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div> 
+  
+  {% if error %}
+  <p>{{ error }}</p>
+{% endif %}
+
 
   <h2>Create An Account</h2>
 
