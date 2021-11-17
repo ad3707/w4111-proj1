@@ -440,7 +440,7 @@ def dogHome2():
         error = 'Unable to collect dog likes' 
                 
 
-    return render_template("dogHome2.html", error = error, user = my_username, name2 = name, user2 = username, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
+    return render_template("dogHome2.html", error = error, user = my_username, dog2 = name, user2 = username, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
 @app.route('/search', methods = ["GET", "POST"])
 def search():
@@ -465,7 +465,7 @@ def search():
         print(username)
         print(username_two)
         
-        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, user_two = username_two, email = email))
+        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, user2 = username_two, email = email))
    
     return render_template("search.html", user = username)
     
@@ -482,7 +482,7 @@ def addFriend():
     print(build)
     activity = request.args.get('activity')
     activity = ""
-    username_two = request.args.get('user_two')
+    username_two = request.args.get('user2')
     email = request.args.get('email')
     error = None
     users_two = []
