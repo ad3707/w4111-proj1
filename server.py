@@ -271,8 +271,8 @@ def home():
         error = 'Address'
     
     
-    try:
-        cursor = 
+    #try:
+        #cursor = 
         
                   
     return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip)
