@@ -111,13 +111,13 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
 
-  <div id = "search">
- <form action = "/signin" method = "POST">
+  <span id = "search">
+ <form action = "/addFriend" method = "POST">
    <span id = "inputs">
     <input type = "text" id = "city" name = "city" placeholder = "city" required />
    </span>
     <span id = "inputs">
-    <input type = "text" id = "city" name = "city" placeholder = "city" required />
+    <input type = "text" id = "state" name = "state" placeholder = "state" required />
    </span>
    <span id = "inputs">
     <input type = "text" id = "size" name = "size" placeholder = "size" required />
@@ -126,7 +126,19 @@
     <input type = "text" id = "size" name = "password" placeholder = "size" required />
    </span>
  <input type = "submit" value = "submit"></input>
-  </div>
+  </span>
+  
+  
+  <span id = "search">
+ <form action = "/addFriend" method = "POST">
+   <div id = "inputs">
+    <input type = "text" id = "user_two" name = "user_two" placeholder = "username" required />
+   </div>
+    <div id = "inputs">
+    <input type = "text" id = "email" name = "email" placeholder = "email" required />
+   </div>
+ <input type = "submit" value = "submit"></input>
+  </span>
   
   
  <div id = "container">
