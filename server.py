@@ -375,6 +375,7 @@ def dogHome():
     try:
         cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)	
         for result in cursor:
+          activity_list.append(result['description'])
 			breed_list.append(result['breed'])
 			birthday_list.append(str(result['birthday']))
 			print(birthday_list)
