@@ -509,6 +509,11 @@ def addFriend():
                 error = 'Search query failed'
                 
         else:
+            context_users_two = dict(data_one = users_two)
+            context_names = dict(data_two = names)
+            context_profile_pictures = dict(data_three = profile_pictures)
+            context_bios = dict(data_four = bios)
+            
             error = 'Invalid Search. Search by city and state, or by size and build, or by activity'
             
             
