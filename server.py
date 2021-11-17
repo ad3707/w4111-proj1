@@ -334,6 +334,68 @@ def dogHome():
     return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
 
+@app.route('/addFriend', methods = ["GET", "POST"])
+def addFriend():
+    username = request.args.get('user')
+    error = None
+    users_two = []
+    names = []
+    bios = []
+    profile_pictures = []
+    
+    if request.method == "POST":
+        city = request.form['city']
+        state = request.form['state']
+        size = request.form['size']
+        build = request.form['build']
+        activity = request.form['activity']
+        username_two = request.form['user_two']
+        email = request.form['email']
+        
+        if len(username_two) != 0:
+            try:
+                cursor = g.conn.execute('SELECT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D WHERE D.username = (%s)', username_two)
+                for result in cursor:
+                    users_two.append(result['username'])
+                    names.append(result['name'])
+                    bios.append(result['bio'])
+                    profile_pictures.append(result['profile_picture'])
+                cursor.close()
+                
+                context_users_two = dict(data_one = users_two)
+                context_names = dict(data_two = names)
+                context_profile_pictures = dict(data_three = profile_pictures)
+                context_bios = dict(data_four = bios)
+                
+            except Exception:
+                error = 'Search query failed'
+                
+         elif len(city) != 0 and len(state) != 0 and len(size) != 0 and len(build) != 0 and len(activity) != 0:
+            try:
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Resides_In R, Address AD, Activities AC WHERE AD.city = (%s) AND AD.state = (%s) AND AD.zip = R.zip AND AD.street_address = R.street_address AND D.username = R.username AND AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name AND D.size = (%s) AND D.build = (%s)', city, state, activity, size, build)
+                
+                for result in cursor:
+                    users_two.append(result['username'])
+                    names.append(result['name'])
+                    bios.append(result['bio'])
+                    profile_pictures.append(result['profile_picture'])
+                cursor.close()
+                
+                context_users_two = dict(data_one = users_two)
+                context_names = dict(data_two = names)
+                context_profile_pictures = dict(data_three = profile_pictures)
+                context_bios = dict(data_four = bios)
+                
+            except Exception:
+                error = 'Search query failed'
+                
+         elif len(city) != 0 and len(state) != 0 and len(size) != 0 and len(build) != 0:
+            try:
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Resides_In R, Address AD WHERE AD.city = (%s) AND AD.state = (%s) AND AD.zip = R.zip AND AD.street_address = R.street_address AND D.username = R.username AND D.size = (%s) AND D.build = (%s)', city, state, size, build)
+                
+
+
+
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
     username = request.args.get('user')
