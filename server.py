@@ -339,8 +339,8 @@ def dogHome():
 @app.route('/dogHome2')
 def dogHome2():
     my_username = request.args.get('user')
-    username = request.args.get('user_2')
-    name = request.args.get('name_2')
+    username = request.args.get('user2')
+    name = request.args.get('dog2')
     print(username)
     print(name)
     
