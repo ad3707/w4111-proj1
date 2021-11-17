@@ -14,13 +14,15 @@
 
 
     #button {
-      width: 150px;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      background: #ffcda3;
-      font-size: 16px;
-      font-weight: bold;
+     width: 150px;
+     padding: 10px;
+     border: line;
+     border-radius: 5px;
+     background: #ffcda3;
+     font-size: 16px;
+     font-weight: bold;
+     margin-top: 80px;
+     border-color: black;
     }
     
      #btncontainer {
@@ -42,6 +44,7 @@
      padding: 20px;
      height: 750px;
      width: 850px;
+     border-style: ridge: 
 
    }
 
@@ -75,7 +78,7 @@
 
   <h1>Add Dog</h1>
   <div id = "form">
-  <form action = "/addDog" method = "POST">
+  <form action = "{{url_for("addDog")}}" method = "POST">
     <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
     <div id = "inputs">
       <input type = "text" id = "name" name = "name" placeholder = "Name" required/>
@@ -85,8 +88,8 @@
       <input type = "text" id = "breed" name = "breed" placeholder = "Breed" />
     </div>
 
-    <div id = "inputs">
-      <input type = "date" id = "birthday" name = "birthday" placeholder = "Birthday" />
+    <div id = "inputs">  <label> Birthday:
+      <input type = "date" id = "birthday" name = "birthday" placeholder = "Birthday" /> </label>
       </div>
 
     <div id = "inputs">
@@ -129,6 +132,18 @@
     </div>
 
 </body>
+  
+  <script> 
+    
+  document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    username = document.getElementById('username');
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
+
+</script>
 
 
 
