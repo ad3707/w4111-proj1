@@ -161,11 +161,11 @@
 
   <span id = "box">
     <h3> Dog Types I play well with: </h3>
-    <span> Size </span>
+    <span> Size | </span>
     <span> Build </span> <br>
         {% for i in range(data_physiques|length) %}
     <div> 
-      <span> {{data_physiques[i] }} </span>
+      <span> {{data_physiques[i] }} | </span>
       <span>  {{data_buils[i] }} </span>
     </div>
         {%endfor%} 
