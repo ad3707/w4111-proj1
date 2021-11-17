@@ -748,6 +748,7 @@ def addFriend():
         context_users_two = dict(data_one = users_two)
         context_names = dict(data_two = names)
         context_bios = dict(data_four = bios)
+        context_profile_pictures = dict(data_three = profile_pictures)
         error = 'Invalid Search. Search by city and state, or by size and build, or by activity'
         
     return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, **context_profile_pictures, **context_bios)        
