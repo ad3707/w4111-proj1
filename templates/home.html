@@ -80,7 +80,7 @@
    }
     
     #schedule {
-     background-color: #FFE1E1;
+     background-color: #d6ffc9;
      height: 450px;
      width: 270px;
      float:left;
@@ -112,6 +112,7 @@
   
   <img src = {{ profile_picture }} id = "profilecont" >
 
+  <div>
   <div id = "box"> 
   <p> <b> You will travel: </b> {{mile_radius}} miles </p> 
   <p> <b>  You will carpool: </b> {{will_carpool}} </p> 
@@ -132,6 +133,7 @@
      <p> <b> End Time: </b> {{ free_time_end[i] }} </p>
     {% endfor %}
    </div>
+    </div>
   
   
 <div id = "menu">
