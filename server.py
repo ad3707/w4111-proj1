@@ -277,12 +277,23 @@ def home():
     except Exception:
         error = 'Address'
     
-    
-    #try:
-        #cursor = 
+    free_day_list = []
+    free_time_start_list = []
+    free_time_end_list = []
+    try:
+        cursor = g.conn.execute('SELECT free_day, free_time_start, free_time_end FROM Is_Free WHERE username = (%s)', username)
+        for result in cursor:
+            free_day_list.append(result['free_day'])
+            free_time_start_list.append(result['free_time_start'])
+            free_time_end_list.append(result['free_time_end'])
+        cursor.close()
+        
+        context_day = dict(free_day = free_day_list)
+        context_start = dict(free_time_start = free_time_start_list)
+        context_end = dict(free_time_end = free_time_end_list)
         
                   
-    return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip)
+    return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip, **context_day, **context_start, **context_end)
 
 
 
