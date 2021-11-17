@@ -211,7 +211,9 @@ def home():
         print('wow')
         for result in cursor:
             has_backyard_list.append(result['has_backyard'])
+            print(has_backyard_list)
             has_children_list.append(result['has_children'])
+            print(has_children_list)
             has_other_pets_list.append(result['has_other_pets'])
             allows_dropoffs_list.append(result['allows_dropoffs'])
             
