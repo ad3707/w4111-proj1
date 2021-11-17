@@ -143,7 +143,7 @@
         </span>
    
     </form>
- <input type = "submit" value = "submit"></input>
+ <input type = "submit" value = "submit"> id = "button" </input>
   </span>
   
   
@@ -178,13 +178,19 @@
 
 
 <script>
+ 
   setTimeout(function() {
-    // Your code here
-}, delayInMilliseconds);
+   document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    user = url.searchParams.get("user");
+    location.href =  '/addDog?user' + user.value;
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
+}, 3000);
   
-  
-  
-  
+ 
 </script>
 
 
