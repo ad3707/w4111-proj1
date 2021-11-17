@@ -210,6 +210,9 @@ def home():
             has_children_list.append(result['has_children'])
             has_other_pets_list.append(result['has_other_pets'])
             allows_dropoffs_list.append(result['allows_dropoffs'])
+            
+        print(has_backyard_list)
+        
         cursor.close()
         if len(has_backyard_list) != 0:
             backyard = has_backyard_list[0]
