@@ -53,13 +53,21 @@
 
  <h2>Request Friend</h2>
 
+ <?php $user = $_GET['user']; ?>
+ <?php $user2 = $_GET['user2']; ?>
+ <?php $dog2 = $_GET['dog2']; ?>
+ 
  <div id = "form">
  <form action = "/like" method = "POST">
    <div id = "inputs">
     <input type = "text" id = "name" name = "name" placeholder = "Dog Name" required />
+    <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
+    <input type = "hidden" id = "user2" name = "user2" value = "{{ user2 }}"  />
+    <input type = "hidden" id = "dog2" name = "dog2" value = "{{ dog2 }}"  />
    </div>
+  
    
- <input type = "submit" value = "Sign in"></input>
+ <input type = "submit" value = "Submit"></input>
   
  </form>
 
