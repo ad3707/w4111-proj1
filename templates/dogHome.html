@@ -168,13 +168,12 @@
 
   <span id = "box">
     <h3> Dogs I am friends with!: </h3>
-    <p>    {% for name in data_likes_name %}
-      <div> {{ name }} </div>
+    {% for i in range(data_likes_name|length) %}
+      <div>
+      <span> {{data_likes_name[i] }} </span>
+      <span> {{data_likes_username[i] }} </span>
+    </div>
         {%endfor%} 
-        {% for username in data_likes_username %}
-      <div> {{ username }} </div>
-        {%endfor%} 
-    </p>
 </span>
 
 
