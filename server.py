@@ -519,8 +519,9 @@ def addFriend():
             error = 'Invalid Search. Search by city and state, or by size and build, or by activity'
             
             
-    return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, ** context_profile_pictures, **context_bios)      
-        
+        return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, ** context_profile_pictures, **context_bios)      
+    else:    
+        return render_template("dogHome.html", error = error)     
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
