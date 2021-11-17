@@ -335,11 +335,14 @@ def dogHome():
 
 @app.route('/search', methods = ["GET", "POST"])
 def search():
+    print("hello one")
         
     username = request.args.get('user')
     
     if request.method == "POST":
+        print("three")
         username = request.form['user']
+        print("four")
         city = request.form['city']
         state = request.form['state']
         size = request.form['size']
