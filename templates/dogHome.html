@@ -151,7 +151,7 @@
   <span id = "box">
     <h3> Dog Types I play well with: </h3>
     <span> Size </span>
-    <span> Build </span>
+    <span> Build </span> <br>
         {% for i in range(data_physiques|length) %}
     <div> 
       <span> {{data_physiques[i] }} </span>
@@ -170,11 +170,11 @@
   <span id = "box">
     <h3> Dogs I am friends with!: </h3>
     <span> Dog </span>
-    <span> Owner </span>
+    <span> Owner </span> <br>
     {% for i in range(data_likes_name|length) %}
       <div> 
       <span> {{data_likes_name[i] }} </span>
-      <span> Owner: {{data_likes_username[i] }} </span>
+      <span> {{data_likes_username[i] }} </span>
     </div>
         {%endfor%} 
 </span>
