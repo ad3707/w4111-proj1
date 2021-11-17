@@ -69,9 +69,9 @@
      height: 400px;
      width: 300px;
      float:left;
-     margin-left: auto;
+     margin-left: 100px;
      margin-top: 50px;
-     margin-bottom: 0px;
+     margin-bottom: 50px;
      text-align: center;
      border-radius: 10px;
      box-shadow: 5px 10px #FFE1E1;
@@ -85,10 +85,11 @@
      float:left;
      margin-left: auto;
      margin-top: 50px;
-     margin-bottom:10px;
+     margin-bottom:50px;
      text-align: center;
      border-radius: 10px;
      box-shadow: 5px 10px #FFE1E1;
+     float: right;
     }
     
   </style>
@@ -110,23 +111,23 @@
   <img src = {{ profile_picture }} id = "profilecont" >
 
   <div id = "box"> 
-  <h3> You will travel {{mile_radius}} miles </h3>
+  <h3> You will travel: {{mile_radius}} miles </h3>
   <h3> You will carpool: {{will_carpool}} </h3>
   <h3> You have a backyard: {{has_backyard}}  </h3>
   <h3> You have kids: {{has_children}} </h3>
   <h3> You have other pets: {{has_other_pets}} </h3>
   <h3> You allow dropoffs: {{allows_dropoffs}}  </h3>
   
-  <h3> Your current address is {{street_address}} {{city}} {{state}} {{zip}}  </h3> 
+  <h3> Current address: {{street_address}} {{city}} {{state}} {{zip}}  </h3> 
   
   </div>
   
    <div id =  "schedule"> 
      <h2> Your Schedule </h2>
     {% for i in range(free_day|length) %}
-      <h2> You are free: {{ free_day[i] }} </h2>
-      <h2> Start time: {{ free_time_start[i] }} </h2>
-      <h2> End Time: {{ free_time_end[i] }} </h2>
+     <p> <b> You are free: </b> {{ free_day[i] }} </p>
+     <p> <b> Start time: </b> {{ free_time_start[i] }} </p>
+     <p> <b> End Time: </b> {{ free_time_end[i] }} </p>
     {% endfor %}
    </div>
   
@@ -137,15 +138,8 @@
 <a href="/mydogs?user={{user}}" class="button"> My Dogs </a>
 </span>
 
-
-  
-  
   <span id = "btncontainer">
 <a href="/addDog?user={{user}}" class="button"> Add Dog </a>
-</span>
-  
-  <span id = "btncontainer">
-<a href="/contactInfo?user={{user}}" class="button"> Your Contact Info </a>
 </span>
   
   <span id = "btncontainer">
