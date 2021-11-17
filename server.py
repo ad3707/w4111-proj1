@@ -333,16 +333,10 @@ def dogHome():
 
     return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
-
-@app.route('/addFriend', methods = ["GET", "POST"])
-def addFriend():
+@app.route('/search', methods = ["GET", "POST"])
+def search():
+        
     username = request.args.get('user')
-    error = None
-    users_two = []
-    names = []
-    bios = []
-    profile_pictures = []
-    
     if request.method == "POST":
         city = request.form['city']
         state = request.form['state']
@@ -351,6 +345,29 @@ def addFriend():
         activity = request.form['activity']
         username_two = request.form['user_two']
         email = request.form['email']
+        
+        print(username_two)
+        
+        return return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
+   
+    return("search.html")
+    
+@app.route('/addFriend', methods = ["GET", "POST"])
+def addFriend():
+    username = request.args.get('user')
+    city = request.args.get('city')
+    state = request.args.get('state')
+    size = request.args.get('size')
+    build = request.args.get('size')
+    activity = request.args.get('activity')
+    username_two = request.args.get('user_two')
+    email = request.args.get('email')
+    error = None
+    users_two = []
+    names = []
+    bios = []
+    profile_pictures = []
+    
         
         if len(username_two) != 0:
             try:
@@ -519,9 +536,7 @@ def addFriend():
             error = 'Invalid Search. Search by city and state, or by size and build, or by activity'
             
             
-        return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, ** context_profile_pictures, **context_bios)      
-    else:    
-        return render_template("addFriend.html", error = error)     
+        return render_template("addFriend.html", error = error, user = username, **context_users_two, **context_names, ** context_profile_pictures, **context_bios)        
 
 @app.route('/addDog', methods = ["GET", "POST"])
 def addDog():
