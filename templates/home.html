@@ -118,24 +118,7 @@
   <img src = {{ profile_picture }} id = "profilecont" >
 
 
-  <span id = "box"> 
-  <p> <b> You will travel: </b> {{mile_radius}} miles </p> 
-  <p> <b>  You will carpool: </b> {{will_carpool}} </p> 
-  <p> <b>  You have a backyard: </b>{{has_backyard}}  </p> 
-  <p> <b>  You have kids: </b>{{has_children}} </p> 
-  <p> <b> You have other pets: </b>{{has_other_pets}} </p> 
-  <p> <b>  You allow dropoffs: </b>{{allows_dropoffs}}  </p> 
-  
-  <p> <b> Current address: </b> {{street_address}} {{city}} {{state}} {{zip}}  </p> 
-  
-  </span>
-  
-   <span id =  "schedule"> 
-     <h2> Your Schedule </h2>
-    {% for i in range(free_day|length) %}
-     <p> <b> You are free: </b> {{ free_day[i] }} <b> Start time: </b> {{ free_time_start[i] }} <b> End Time: </b> {{ free_time_end[i] }} </p>
-    {% endfor %}
-   </span>
+
   
 <div id = "menu">
 
@@ -153,6 +136,25 @@
   
  
 </div>
+  
+   <span id = "box"> 
+  <p> <b> You will travel: </b> {{mile_radius}} miles </p> 
+  <p> <b>  You will carpool: </b> {{will_carpool}} </p> 
+  <p> <b>  You have a backyard: </b>{{has_backyard}}  </p> 
+  <p> <b>  You have kids: </b>{{has_children}} </p> 
+  <p> <b> You have other pets: </b>{{has_other_pets}} </p> 
+  <p> <b>  You allow dropoffs: </b>{{allows_dropoffs}}  </p> 
+  
+  <p> <b> Current address: </b> {{street_address}} {{city}} {{state}} {{zip}}  </p> 
+  
+  </span>
+  
+   <span id =  "schedule"> 
+     <h2> Your Schedule </h2>
+    {% for i in range(free_day|length) %}
+     <p> <b> You are free: </b> {{ free_day[i] }} <b> Start time: </b> {{ free_time_start[i] }} <b> End Time: </b> {{ free_time_end[i] }} </p>
+    {% endfor %}
+   </span>
 
 </body>
 
