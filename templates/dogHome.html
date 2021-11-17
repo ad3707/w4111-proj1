@@ -43,7 +43,7 @@
     #box {
      background-color: #ccffff;
      height: 300px;
-     width: 330px;
+     width: 300px;
      float:left;
      margin-left: 39px;
      margin-top: 70px;
@@ -169,7 +169,7 @@
     <h3> Dogs I am friends with!: </h3>
     {% for i in range(data_likes_name|length) %}
       <div> 
-      <span> Dog: {{data_likes_name[i] }} </span>
+      <span> {{data_likes_name[i] }} </span>
       <span> Owner: {{data_likes_username[i] }} </span>
     </div>
         {%endfor%} 
