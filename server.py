@@ -337,7 +337,7 @@ def dogHome():
 def search():
         
     username = request.args.get('user')
-    if request.method == "POST":
+    if request.method == "GET":
         city = request.form['city']
         state = request.form['state']
         size = request.form['size']
