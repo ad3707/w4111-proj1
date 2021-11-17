@@ -202,7 +202,7 @@ def home():
     has_backyard_list = []
     has_children_list = []
     has_other_pets_list = []
-    allows_dropoffs = []
+    allows_dropoffs_list = []
     
     print('what')
     try:
@@ -220,8 +220,10 @@ def home():
         print(has_backyard_list)
         
         cursor.close()
+        print(len(has_backyard_list))
         if len(has_backyard_list) != 0:
             backyard = has_backyard_list[0]
+            print(backyard)
             children = has_children_list[0]
             has_other_pets = has_other_pets_list[0]
             allows_dropoffs = allows_dropoffs_list[0]
@@ -259,10 +261,6 @@ def home():
     city_list = []
     state_list = []
     zip_list = []
-    street = ""
-    city = ""
-    state = ""
-    zip = ""
     try:
         cursor = g.conn.execute('SELECT A.street_address, A.city, A.state, A.zip FROM Address A, Resides_In R WHERE R.username = (%s) AND A.zip = R.zip AND A.street_address = R.street_address', username)
         for result in cursor:
