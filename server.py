@@ -366,8 +366,11 @@ def addFriend():
     print(username)
     city = request.args.get('city')
     state = request.args.get('state')
+    print(state)
     size = request.args.get('size')
     build = request.args.get('size')
+    print(size)
+    print(build)
     activity = request.args.get('activity')
     activity = ""
     username_two = request.args.get('user_two')
