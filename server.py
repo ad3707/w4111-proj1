@@ -809,14 +809,23 @@ def addDog():
     error = None
     if request.method == "POST":
         username = request.form['user']
+        print(username)
         name = request.form['name']
+        print(name)
         breed = request.form['breed']
-        #birthday = request.form ['birthday']
+        print(breed)
+        birthday = request.form ['birthday']
+        print(birthday)
         profile_picture = request.form['profile_picture']
+        print(profile_picture)
         bio = request.form['bio']
+        print(bio)
         sex = request.form['sex']
+        print(sex)
         size = request.form['size']
+        print(size)
         build = request.form['build']
+        print(build)
         
         try:
             g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, breed, sex, profile_picture, bio, since, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', name, breed, sex, profile_picture, bio, since, username, size, build)
