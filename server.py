@@ -385,7 +385,7 @@ def dogHome():
           size_list.append(result['size'])
           build_list.append(result['build'])
         cursor.close()
-        birthday = birthday_list[0]
+        birthday = str(birthday_list[0])
         print(birthday)
         breed = breed_list[0]
         sex = sex_list[0]
@@ -494,7 +494,7 @@ def dogHome2():
           build_list.append(result['build'])
           
         cursor.close()
-        birthday = birthday_list[0]
+        birthday = str(birthday_list[0])
         print(birthday)
         breed = breed_list[0]
         sex = sex_list[0]
