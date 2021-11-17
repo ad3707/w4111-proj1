@@ -342,6 +342,7 @@ def search():
     if request.method == "POST":
         print("three")
         username = request.form['user']
+        print(username)
         print("four")
         city = request.form['city']
         state = request.form['state']
