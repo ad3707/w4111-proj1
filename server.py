@@ -211,13 +211,17 @@ def home():
             has_other_pets_list.append(result['has_other_pets'])
             allows_dropoffs_list.append(result['allows_dropoffs'])
         cursor.close()
-        backyard = has_backyard_list[0]
-        children = has_children_list[0]
-        has_other_pets = has_other_pets_list[0]
-        allows_dropoffs = allows_dropoffs_list[0]
+        if len(has_backyard_list) != 0:
+            backyard = has_backyard_list[0]
+            children = has_children_list[0]
+            has_other_pets = has_other_pets_list[0]
+            allows_dropoffs = allows_dropoffs_list[0]
         
-        if len(has_backyard_list) == 0:
+        else:
             backyard = 'Is not willing to host'
+            children = ""
+            has_other_pets = ""
+            allows_dropoffs = ""
             
     except Exception:
         error = 'Will host'
