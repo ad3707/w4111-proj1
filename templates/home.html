@@ -44,10 +44,10 @@
     
 #menu{
  background-color: #FFE1E1;
- margin-top: 150px;
+ margin-top: 200px;
  margin:auto;
  height: 50px;
- width: 1000px;
+ width: 900px;
  padding: 20px;
  border-radius: 10px;
  box-shadow: 4px 5px #ffcfcf;
@@ -66,8 +66,8 @@
     
     #box {
      background-color: #fad195;
-     height: 400px;
-     width: 300px;
+     height: 450px;
+     width: 350px;
      float:left;
      margin-left: 100px;
      margin-top: 50px;
@@ -75,12 +75,13 @@
      text-align: center;
      border-radius: 10px;
      box-shadow: 5px 10px #FFE1E1;
+     font-size: 15px;
 
    }
     
     #schedule {
-     background-color: #fad195;
-     height: 380px;
+     background-color: #FFE1E1;
+     height: 450px;
      width: 270px;
      float:left;
      margin-left: auto;
@@ -88,8 +89,9 @@
      margin-bottom:50px;
      text-align: center;
      border-radius: 10px;
-     box-shadow: 5px 10px #FFE1E1;
+     box-shadow: 5px 10px #fad195;
      float: right;
+     font-size: 15px;
     }
     
   </style>
@@ -111,14 +113,14 @@
   <img src = {{ profile_picture }} id = "profilecont" >
 
   <div id = "box"> 
-  <h3> You will travel: {{mile_radius}} miles </h3>
-  <h3> You will carpool: {{will_carpool}} </h3>
-  <h3> You have a backyard: {{has_backyard}}  </h3>
-  <h3> You have kids: {{has_children}} </h3>
-  <h3> You have other pets: {{has_other_pets}} </h3>
-  <h3> You allow dropoffs: {{allows_dropoffs}}  </h3>
+  <p> <b> You will travel: </b> {{mile_radius}} miles </p> 
+  <p> <b>  You will carpool: </b> {{will_carpool}} </p> 
+  <p> <b>  You have a backyard: </b>{{has_backyard}}  </p> 
+  <p> <b>  You have kids: </b>{{has_children}} </p> 
+  <p> <b> You have other pets: </b>{{has_other_pets}} </p> 
+  <p> <b>  You allow dropoffs: </b>{{allows_dropoffs}}  </p> 
   
-  <h3> Current address: {{street_address}} {{city}} {{state}} {{zip}}  </h3> 
+  <p> <b> Current address: </b> {{street_address}} {{city}} {{state}} {{zip}}  </p> 
   
   </div>
   
