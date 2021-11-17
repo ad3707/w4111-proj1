@@ -141,9 +141,10 @@
     <option value="heavy-set">heavy-set</option>
   </select>
         </span>
-   
-    </form>
+
  <input type = "submit" value = "submit" id = "button" > </input>
+       
+    </form>
   </span>
   
   
@@ -155,27 +156,12 @@
     <div id = "inputs">
     <input type = "text" id = "email" name = "email" placeholder = "email"  />
    </div> <br>
-    </form>
+
  <input type = "submit" value = "submit" id = "button" ></input>
+        </form>
   </span>
   
-  
- <div id = "container">
  
-  
-  <div> 
-    {% for i in range(data_three|length) %}
-    <h2> {{ data_two[i] }} </h2>
-    <span id = "box"> <img src = {{ data_three[i] }} id = "imglay"> 
-      <h2> {{ data_four[i] }} </h2>
-      <h2> Owner: {{ data_one[i] }} </h2>
-      <a href="/dogHome2?user={{ user }}&user2={{ data_one[i] }}&dog2={{ data_two[i] }}" class="button"> Learn about {{ data_two[i] }} </a>  
-    </span>
-    {% endfor %}
-   </div>
-  
-  </div>
-
  
 </body>
 
