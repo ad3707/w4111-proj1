@@ -314,7 +314,11 @@ def like():
 		dog = request.form['dog']
 		
 		try:
-			cursor = g.conn.execute('INSERT INTO Likes_Dog(name_likes, name_is_liked_by, username_likes, username_is_liked_by) VALUES (%s, %s, %s, %s)' , dog, dog2,username, username2)
+			cursor = g.conn.execute('INSERT INTO Likes_Dog(name_likes, name_is_liked_by, username_likes, username_is_liked_by) VALUES (%s, %s, %s, %s)' , dog, dog2 ,username, username2)
+			print(username)
+			print(username2)
+			print(dog2)
+			print(dog)
 			return redirect(url_for('dogHome2', user = username, user2 = username2, dog2 = dog2))
 		
 		except:
