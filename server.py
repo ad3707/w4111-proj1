@@ -250,6 +250,10 @@ def home():
     city_list = []
     state_list = []
     zip_list = []
+    street = ""
+    city = ""
+    state = ""
+    zip = ""
     try:
         cursor = g.conn.execute('SELECT A.street_address, A.city, A.state, A.zip FROM Address A, Resides_In R WHERE R.username = (%s) AND A.zip = R.zip AND A.street_address = R.street_address', username)
         for result in cursor:
@@ -265,6 +269,10 @@ def home():
             
     except Exception:
         error = 'Address'
+    
+    
+    try:
+        cursor = 
         
                   
     return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip)
