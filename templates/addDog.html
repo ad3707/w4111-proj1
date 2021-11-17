@@ -13,7 +13,7 @@
     }
 
 
-    button {
+    #button {
       width: 150px;
       padding: 10px;
       border: none;
@@ -129,18 +129,6 @@
     </div>
 
 </body>
-
-  <script>
-document.getElementById('button').onclick = function() {
-    var a = document.createElement('a');
-    a.target = '_blank';
-    user = url.searchParams.get("username");
-    name = document.getElementById('name');
-    //location.href =  '/?user=' + user.value + '&name=' + name.value;
-    var container = document.getElementById('form');
-    container.appendChild(a);
-}
-</script>
 
 
 
