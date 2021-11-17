@@ -61,6 +61,20 @@
      border-radius: 100%;
    }
     
+    
+    #box {
+     background-color: #fad195;
+     height: 380px;
+     width: 270px;
+     float:left;
+     margin-left: 50px;
+     margin-top: 50px;
+     margin-bottom: 0px;
+     text-align: center;
+     border-radius: 10px;
+     box-shadow: 5px 10px #FFE1E1;
+
+   }
   </style>
 
 
@@ -85,11 +99,11 @@
   <h3> Your current address is {{street_address}} {{city}} {{state}} {{zip}}  </h3> 
   <div> 
     {% for i in range(free_day|length) %}
-    <span id = "box"> 
+    <div id = "box"> 
       <h2> You are free: {{ free_day[i] }} </h2>
       <h2> Start time: {{ free_time_start[i] }} </h2>
       <h2> End Time: {{ free_time_end[i] }} </h2>
-    </span>
+    </div>
     {% endfor %}
    </div>
   
