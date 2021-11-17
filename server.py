@@ -368,7 +368,7 @@ def addFriend():
     state = request.args.get('state')
     print(state)
     size = request.args.get('size')
-    build = request.args.get('size')
+    build = request.args.get('build')
     #print(size)
     print(build)
     activity = request.args.get('activity')
