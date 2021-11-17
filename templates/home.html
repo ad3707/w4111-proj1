@@ -37,7 +37,7 @@
 
   #btncontainer {
      margin-top: 50px;
-     margin-left: auto;
+     margin-left: 30px;
      text-align: center;
    }
     
@@ -109,11 +109,10 @@
   <h2> Welcome, {{ user }} ! </h2>
   
   
-  <div> 
-    <img src = {{ profile_picture }} id = "profilecont" >
+  <img src = {{ profile_picture }} id = "profilecont" >
 
-  <div>
-  <div id = "box"> 
+
+  <span id = "box"> 
   <p> <b> You will travel: </b> {{mile_radius}} miles </p> 
   <p> <b>  You will carpool: </b> {{will_carpool}} </p> 
   <p> <b>  You have a backyard: </b>{{has_backyard}}  </p> 
@@ -123,19 +122,14 @@
   
   <p> <b> Current address: </b> {{street_address}} {{city}} {{state}} {{zip}}  </p> 
   
-  </div>
+  </span>
   
-   <div id =  "schedule"> 
+   <span id =  "schedule"> 
      <h2> Your Schedule </h2>
     {% for i in range(free_day|length) %}
-     <p> <b> You are free: </b> {{ free_day[i] }} </p>
-     <p> <b> Start time: </b> {{ free_time_start[i] }} </p>
-     <p> <b> End Time: </b> {{ free_time_end[i] }} </p>
+     <p> <b> You are free: </b> {{ free_day[i] }} <b> Start time: </b> {{ free_time_start[i] }} <b> End Time: </b> {{ free_time_end[i] }} </p>
     {% endfor %}
-   </div>
-    </div>
-  
-  </div>
+   </span>
   
 <div id = "menu">
 
