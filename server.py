@@ -345,6 +345,8 @@ def search():
         print(username)
         print("four")
         city = request.form['city']
+        print("five")
+        print("city")
         state = request.form['state']
         size = request.form['size']
         build = request.form['build']
