@@ -350,7 +350,7 @@ def search():
         
         return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
    
-    return("search.html")
+    return render_template("search.html")
     
 @app.route('/addFriend', methods = ["GET", "POST"])
 def addFriend():
