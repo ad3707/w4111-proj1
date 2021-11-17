@@ -247,7 +247,7 @@ def dogHome():
     try:
         cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
         for result in cursor:
-            birthday_list.append(result['birthday'])                            
+            birthday_list.append(str(result['birthday']))                            
             breed_list.append(result['breed'])
             sex_list.append(result['sex'])
             profile_picture_list.append(result['profile_picture'])
@@ -551,7 +551,7 @@ def addDog():
                 error = 'Invalid breed. Number mmust be 11 characters or less. Try again'
         if error is None and birthday:
             try:
-                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET birthday = ({:%B %d, %Y}) WHERE username = (%s) AND name = (%s)', birthday, username,name)
+                g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET birthday = (%Y-%m-%d) WHERE username = (%s) AND name = (%s)', birthday, username,name)
             except Exception:
                 error = 'Invalid breed. Number mmust be 11 characters or less. Try again'
         if error is None and profile_picture:
