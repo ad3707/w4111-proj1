@@ -509,6 +509,8 @@ def addFriend():
                 error = 'Search query failed'
                 
         else:
+            users_two.append('HELLO')
+            print(users_two)
             context_users_two = dict(data_one = users_two)
             context_names = dict(data_two = names)
             context_profile_pictures = dict(data_three = profile_pictures)
