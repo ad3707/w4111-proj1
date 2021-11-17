@@ -742,6 +742,23 @@ def addFriend():
         except Exception:
             error = 'Search query failed'
                 
+    elif len(activity) == 0 and len(size) == 0 and len(build) == 0 and len(city) == 0 and len(state) == 0:
+        cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_pic FROM Dogs_Owned_By_Has_Physique D')
+        
+                users_two.append(result['username'])
+                names.append(result['name'])
+                bios.append(result['bio'])
+                profile_pictures.append(result['profile_picture'])
+            cursor.close()
+                
+            context_users_two = dict(data_one = users_two)
+            context_names = dict(data_two = names)
+            context_profile_pictures = dict(data_three = profile_pictures)
+            context_bios = dict(data_four = bios)
+                
+        except Exception:
+            error = 'Search query failed'
+    
     else:
         users_two.append('HELLO')
         print(users_two)
