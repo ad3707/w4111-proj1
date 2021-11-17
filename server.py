@@ -267,7 +267,7 @@ def home():
             street_list.append(result['street_address'])
             city_list.append(result['city'])
             state_list.append(result['state'])
-            zip.append(result['zip'])
+            zip_list.append(result['zip'])
         cursor.close()
         street = street_list[0]
         city = state_list[0]
