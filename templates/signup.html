@@ -7,15 +7,16 @@
      text-align: center;
    }
 
-   button {
+   #button {
      width: 150px;
      padding: 10px;
-     border: none;
+     border: line;
      border-radius: 5px;
      background: #ffcda3;
      font-size: 16px;
      font-weight: bold;
-     margin-top: 50px;
+     margin-top: 80px;
+     border-color: black;
 
    }
 
@@ -28,15 +29,17 @@
    #form {
      margin: auto;
      background-color: #ffe1e1;
-     padding: 20px;
+     padding: 40px 20px 40px;
      height: 300px;
      width: 400px;
+     border-style: ridge;
+     border-width: 5px;
+     border-color:#ffcda3 
 
    }
 
    #inputs {
      margin-bottom: 30px;
-
    }
 
  </style>
@@ -78,7 +81,6 @@ document.getElementById('button').onclick = function() {
     var a = document.createElement('a');
     a.target = '_blank';
     username = document.getElementById('username');
-    //location.href =  '/signup2?username=' + username.value;
     var container = document.getElementById('form');
     container.appendChild(a);
 }
