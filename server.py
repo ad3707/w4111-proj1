@@ -345,7 +345,7 @@ def search():
         activity = request.form['activity']
         username_two = request.form['user_two']
         email = request.form['email']
-        
+        print(username)
         print(username_two)
         
         return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
@@ -355,6 +355,7 @@ def search():
 @app.route('/addFriend', methods = ["GET", "POST"])
 def addFriend():
     username = request.args.get('user')
+    print(username)
     city = request.args.get('city')
     state = request.args.get('state')
     size = request.args.get('size')
