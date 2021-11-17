@@ -302,20 +302,25 @@ def home():
 
 @app.route('/like', methods = ["GET", "POST"])
 def like():
-    username = request.args.get('user')
-	username2 = request.args.get('user_two')
+	username = request.args.get('user')
+	username2 = request.args.get('user2')
 	dog2 = request.args.get('dog2')
-    
-    if request.method == "POST":
-        username = request.form['user']
-        username2 = request.form['user2']
-        dog2 = request.form['dog2']
-        dog = request.form('dog')
-        
-        try:
-	        cursor = g.conn.execute('INSERT INTO Likes_Dog(name_likes, name_is_liked_by, username_likes, username_is_liked_by) VALUES (%s, %s, %s, %s)' , dog, dog2,username, username2)
-            return redirect(url_for('dogHome2', user = username, user2 = username2, dog2 = dog2))
-    return render_template("like.html", user = username)
+	error = None
+	
+	if request.method == "POST":
+		username = request.form['user']
+		username2 = request.form['user2']
+		dog2 = request.form['dog2']
+		dog = request.form('dog')
+		
+		try:
+			cursor = g.conn.execute('INSERT INTO Likes_Dog(name_likes, name_is_liked_by, username_likes, username_is_liked_by) VALUES (%s, %s, %s, %s)' , dog, dog2,username, username2)
+			return redirect(url_for('dogHome2', user = username, user2 = username2, dog2 = dog2))
+		
+		except:
+			error = 'Like failed'
+			
+    return render_template("like.html", error = error)
 
 
 @app.route('/mydogs')
