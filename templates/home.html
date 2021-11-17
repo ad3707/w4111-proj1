@@ -82,18 +82,23 @@
   <h3> You have other pets: {{has_other_pets}} </h3>
   <h3> You allow dropoffs: {{allows_dropoffs}}  </h3>
   
-  <h3> Your current address is {{street_address}} {{zip}} </h3> 
+  <h3> Your current address is {{street_address}} {{city}} {{state}} {{zip}}  </h3> 
+  <div> 
+    {% for i in range(free_day|length) %}
+    <span id = "box"> 
+      <h2> You are free: {{ free_day[i] }} </h2>
+      <h2> Start time: {{ free_time_start[i] }} </h2>
+      <h2> End Time: {{ free_time_end[i] }} </h2>
+    </span>
+    {% endfor %}
+   </div>
+  
+  
 <div id = "menu">
 
 <span id = "btncontainer">
 <a href="/mydogs?user={{user}}" class="button"> My Dogs </a>
 </span>
-  
-
-  free_day VARCHAR(10),
-free_time_start TIME,
-free_time_end TIME,
-
 
 
   
