@@ -40,8 +40,8 @@
      margin: auto;
      background-color: #ffe1e1;
      padding: 20px;
-     height: 600px;
-     width: 800px;
+     height: 750px;
+     width: 850px;
 
    }
 
@@ -125,7 +125,7 @@
 
 
     </form>
-    <button type = "submit"> Add </button>
+    <button type = "submit" id = "submit" > Add </button>
     </div>
 
 </body>
@@ -136,7 +136,7 @@ document.getElementById('button').onclick = function() {
     a.target = '_blank';
     user = url.searchParams.get("username");
     name = document.getElementById('name');
-    location.href =  '/preferences?user=' + user.value + '&name=' + name.value;
+    //location.href =  '/?user=' + user.value + '&name=' + name.value;
     var container = document.getElementById('form');
     container.appendChild(a);
 }
