@@ -375,14 +375,15 @@ def dogHome():
     try:
         cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
         for result in cursor:
-            birthday_list.append(str(result['birthday']))                            
-            breed_list.append(result['breed'])
-            sex_list.append(result['sex'])
-            profile_picture_list.append(result['profile_picture'])
-            bio_list.append(result['bio'])
-            since_joined_list.append(result['since'])
-            size_list.append(result['size'])
-            build_list.append(result['build'])
+		birthday_list.append(str(result['birthday']))
+		print(birthday_list)
+		breed_list.append(result['breed'])
+		sex_list.append(result['sex'])
+		profile_picture_list.append(result['profile_picture'])
+		bio_list.append(result['bio'])
+		since_joined_list.append(result['since'])
+		size_list.append(result['size'])
+		build_list.append(result['build'])
         cursor.close()
         birthday = birthday_list[0]
         print(birthday)
@@ -483,14 +484,14 @@ def dogHome2():
     try:
         cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
         for result in cursor:
-            birthday_list.append(str(result['birthday']))                            
-            breed_list.append(result['breed'])
-            sex_list.append(result['sex'])
-            profile_picture_list.append(result['profile_picture'])
-            bio_list.append(result['bio'])
-            since_joined_list.append(result['since'])
-            size_list.append(result['size'])
-            build_list.append(result['build'])
+		birthday_list.append(str(result['birthday']))
+		breed_list.append(result['breed'])
+		sex_list.append(result['sex'])
+		profile_picture_list.append(result['profile_picture'])
+		bio_list.append(result['bio'])
+		since_joined_list.append(result['since'])
+		size_list.append(result['size'])
+		build_list.append(result['build'])
         cursor.close()
         birthday = birthday_list[0]
         print(birthday)
@@ -995,21 +996,6 @@ def signup2():
     return render_template("signup2.html", error = error) 
         
         
-
-'''
-# Example of adding new data to the database
-@app.route('/add', methods=['POST'])
-def add():
-  name = request.form['name']
-  g.conn.execute('INSERT INTO test(name) VALUES (%s)', name)
-  return redirect('/')
-
-
-@app.route('/login')
-def login():
-    abort(401)
-    this_is_never_executed()
-'''
 
 if __name__ == "__main__":
   import click
