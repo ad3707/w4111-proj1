@@ -327,7 +327,7 @@ def like():
 		except:
 			error = 'Like failed'
 			
-	return render_template("like.html", error = error)
+	return render_template("like.html", error = error, user = username, user2 = username2, dog2 = dog2)
 
 
 @app.route('/mydogs')
