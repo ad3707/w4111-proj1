@@ -235,11 +235,13 @@ def home():
             mile_list.append(result['mile_radius'])
             carpool_list.append(result['will_carpool'])
         cursor.close()
-        mile = mile_list[0]
-        carpool = carpool_list[0]
+        if len(mile_list) != 0:
+            mile = mile_list[0]
+            carpool = carpool_list[0]
         
-        if len(mile_list) == 0:
+        else:
             mile = 'Is not willing to travel'
+            carpool = ""
             
     except Exception:
         error = 'Will host'
@@ -249,26 +251,23 @@ def home():
     state_list = []
     zip_list = []
     try:
-        cursor = g.conn.execute('SELECT has_backyard, has_children, has_other_pets, allows_dropoffs FROM Will_Host WHERE username = (%s)', username)
+        cursor = g.conn.execute('SELECT A.street_address, A.city, A.state, A.zip FROM Address A, Resides_In R WHERE R.username = (%s) AND A.zip = R.zip AND A.street_address = R.street_address', username)
         for result in cursor:
-            street_list.append(result['has_backyard'])
-            city_list.append(result['has_children'])
-            state_list.append(result['has_other_pets'])
-            allows_dropoffs_list.append(result['allows_dropoffs'])
+            street_list.append(result['street_address'])
+            city_list.append(result['city'])
+            state_list.append(result['state'])
+            zip.append(result['zip'])
         cursor.close()
-        backyard = has_backyard_list[0]
-        children = has_children_list[0]
-        has_other_pets = has_other_pets_list[0]
-        allows_dropoffs = allows_dropoffs_list[0]
-        
-        if len(has_backyard_list) == 0:
-            backyard = 'Is not willing to host'
+        street = street_list[0]
+        city = state_list[0]
+        state = state_list[0]
+        zip = zip_list[0]
             
     except Exception:
-        error = 'Will host'
+        error = 'Address'
         
                   
-    return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool)
+    return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip)
 
 
 
