@@ -312,7 +312,10 @@ def like():
 		username2 = request.form['user2']
 		dog2 = request.form['dog2']
 		dog = request.form['dog']
-		
+		print(username)
+		print(username2)
+		print(dog2)
+		print(dog)
 		try:
 			cursor = g.conn.execute('INSERT INTO Likes_Dog(name_likes, name_is_liked_by, username_likes, username_is_liked_by) VALUES (%s, %s, %s, %s)' , dog, dog2 ,username, username2)
 			print(username)
