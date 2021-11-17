@@ -116,7 +116,11 @@
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
   </div>
   
-  <h2> Hello  I am {{ name }} ! </h2>
+  <h2> Hello  I am {{ name2 }} ! </h2>
+  
+  <div id = "btncontainer">
+<a href="like?user={{ user }}&user2={{ user2}}&dog2={{ dog2}} " class="button"> Send {{ dog2 }} a Like! </a>
+</div>
 
 <span id = "box_two">
   <h3> The Basics: </h3>
@@ -124,7 +128,8 @@
       Gender: {{ sex }} <br>
       Breed: {{ breed }} <br>
       Size: {{ size }} <br>
-      Build: {{ build }} <br> </p>
+      Build: {{ build }} <br>
+      My Owner: {{ user2 }} <br> </p>
 </span>
   
  <img src = {{ profile_picture }} id = "profilecont" >  
