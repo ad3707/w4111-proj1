@@ -348,7 +348,7 @@ def search():
         
         print(username_two)
         
-        return return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
+        return redirect(url_for('addFriend',user = username, city = city, state = state, size = size, build = build, activity = activity, user_two = username_two, email = email))
    
     return("search.html")
     
