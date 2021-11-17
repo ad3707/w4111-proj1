@@ -202,6 +202,8 @@ def home():
                   
     return render_template("home.html", user = username, name = name, profile_picture = profile_picture)
 
+
+
 @app.route('/mydogs')
 def mydogs():
     username = request.args.get('user')
@@ -332,6 +334,113 @@ def dogHome():
              
 
     return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
+
+
+@app.route('/dogHome2')
+def dogHome2():
+    my_username = request.args.get('user')
+    username = request.args.get('user_2')
+    name = request.args.get('name_2')
+    print(username)
+    print(name)
+    
+    error = None
+    birthday_list = []
+    breed_list = []
+    sex_list = []
+    profile_picture_list = []
+    bio_list = []
+    since_joined_list = []
+    size_list = []
+    build_list = []
+    
+    try:
+        cursor = g.conn.execute('SELECT birthday, breed, sex, profile_picture, bio, since, size, build FROM Dogs_Owned_By_Has_Physique WHERE username = (%s) AND name = (%s)', username, name)
+        for result in cursor:
+            birthday_list.append(str(result['birthday']))                            
+            breed_list.append(result['breed'])
+            sex_list.append(result['sex'])
+            profile_picture_list.append(result['profile_picture'])
+            bio_list.append(result['bio'])
+            since_joined_list.append(result['since'])
+            size_list.append(result['size'])
+            build_list.append(result['build'])
+        cursor.close()
+        birthday = birthday_list[0]
+        print(birthday)
+        breed = breed_list[0]
+        sex = sex_list[0]
+        profile_picture = profile_picture_list[0]
+        bio = bio_list[0]
+        since_joined = since_joined_list[0]
+        size = size_list[0]
+        build = build_list[0]
+        
+    except Exception:
+        error = 'Unable to collect dog information'
+        
+    activity_list = []    
+    try:
+        cursor = g.conn.execute('SELECT A.description FROM Activities A, Likes_Activity L WHERE L.username = (%s) AND L.name = (%s) AND L.activity_id = A.activity_id', username, name)
+        for result in cursor:
+            activity_list.append(result['description'])
+        cursor.close()
+        
+        context_activity = dict(data_activities = activity_list)
+        
+    except Exception:
+        error = 'Unable to collect dog activities'    
+        
+    physique_list = []
+    build_list = []
+    try:
+        cursor = g.conn.execute('SELECT P.size, P.build FROM Physique P, Likes_Physique L WHERE L.username = (%s) AND L.name = (%s) AND L.size = P.size and L.build = P.build', username, name)
+        for result in cursor:
+            physique_list.append(result['size'])
+            build_list.append(result['build'])
+        cursor.close()
+        print(physique_list)
+        context_physiques = dict(data_physiques = physique_list)
+        context_builds = dict(data_buils = build_list)
+        
+    except Exception:
+        error = 'Unable to collect dog physiques' 
+        
+    accomodation_list = []    
+    try:
+        cursor = g.conn.execute('SELECT A.description FROM Accommodations A, Has_Accommodation H WHERE H.username = (%s) AND H.name = (%s) AND H.accommodation_id = A.accommodation_id', username, name)
+        for result in cursor:
+            accomodation_list.append(result['description'])
+        cursor.close()
+        
+              
+        if len(accomodation_list) == 0:
+            accomodation_list.append('None')
+            
+            
+        context_accomodations = dict(data_accomodations = accomodation_list)
+        
+    except Exception:
+        error = 'Unable to collect dog accomodations' 
+        
+        
+    likes_name_list = []
+    likes_username_list = []
+    try:
+        cursor = g.conn.execute('SELECT L.username_is_liked_by, L.name_is_liked_by FROM Likes_Dog L WHERE L.username_likes = (%s) AND L.name_likes = (%s)', username, name)
+        for result in cursor:
+            likes_name_list.append(result['name_is_liked_by'])
+            likes_username_list.append(result['username_is_liked_by'])
+        cursor.close()
+
+        context_likes_name = dict(data_likes_name = likes_name_list)
+        context_likes_username = dict(data_likes_username = likes_username_list)
+        
+    except Exception:
+        error = 'Unable to collect dog likes' 
+                
+
+    return render_template("dogHome2.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
 @app.route('/search', methods = ["GET", "POST"])
 def search():
