@@ -118,13 +118,13 @@
     <h3> If filtering by location, must enter both city and state. If filtering by physique, must put both size and build. </h3>
     <?php $user = $_GET['user']; ?>
     <form action = "/search" method = "POST">
-   <span id = "inputs">
+   <div id = "inputs">
      <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
     <input type = "text" id = "city" name = "city" placeholder = "city" />
-   </span>
-    <span id = "inputs">
+   </div>
+    <div id = "inputs">
     <input type = "text" id = "state" name = "state" placeholder = "state"  />
-   </span>
+   </div>
    
    <span id = "inputs">
    <label for="size">Size:</label>
