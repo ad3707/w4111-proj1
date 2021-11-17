@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title> Dinder </title>
+</head>
+
+  <style>
+
+    body{
+      font-size: 15px;
+      font-family: 'Copperplate', serif;
+      text-align: center;
+    }
+
+    .button {
+    width: 150px;
+    height: 25px;
+    background: #C4C4C4;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    margin-top: 100px;
+    text-decoration:none;
+    box-shadow: 4px 5px #878787;
+}
+
+
+    #header {
+     background-color: #00d0ff;
+     margin: auto;
+     height: 150px;
+   }
+
+
+  #btncontainer {
+     margin-top: 50px;
+     margin-left: 30px;
+     text-align: center;
+   }
+    
+    #topbtncontainer {
+     margin-top: 90px;
+     margin-right: 30px;
+     text-align: center;
+     float:right;
+   }
+    
+#menu {
+ background-color: #FFE1E1;
+ margin-top: 200px;
+ margin:auto;
+ height: 50px;
+ width: 900px;
+ padding: 20px;
+ border-radius: 10px;
+ box-shadow: 4px 5px #ffcfcf;
+}
+    
+   #profilecont {
+     background-color: #fad195;
+     height: 250px;
+     width: 250px;
+     margin: auto;
+     margin-top: 30px;
+     margin-bottom:30px;
+     border-radius: 100%;
+   }
+    
+    
+    #box {
+     background-color: #d6ffc9;
+     height: 450px;
+     width: 350px;
+     float:left;
+     margin-right:50px;
+     margin-left: 200px;
+     margin-top: 50px;
+     margin-bottom: 50px;
+     text-align: center;
+     border-radius: 10px;
+     box-shadow: 5px 10px #FFE1E1;
+     font-size: 18px;
+
+   }
+    
+    #schedule {
+     background-color: #d6ffc9;
+     height: 450px;
+     width: 400px;
+     float:right;
+     margin-right: 200px;
+     margin-top: 50px;
+     margin-bottom:50px;
+     text-align: center;
+     border-radius: 10px;
+     box-shadow: 5px 10px #FFE1E1;
+     font-size: 18px;
+    }
+    
+  </style>
+
+
+<body>
+
+  <div id = "header">
+    <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+    
+  <span id = "topbtncontainer">
+  <a href="/" class="button"> Log out </a> 
+  </span>
+  </div>
+  
+  <h2>  {{ user2 }} ! </h2>
+  
+  
+  <img src = {{ profile_picture }} id = "profilecont" >
+  
+   <span id = "box"> 
+  <p> <b> Will travel: </b> {{mile_radius}} miles </p> 
+  <p> <b>  Will carpool: </b> {{will_carpool}} </p> 
+  <p> <b>  Has a backyard: </b>{{has_backyard}}  </p> 
+  <p> <b>  Has kids: </b>{{has_children}} </p> 
+  <p> <b>  Has other pets: </b>{{has_other_pets}} </p> 
+  <p> <b>  Allows dropoffs: </b>{{allows_dropoffs}}  </p> 
+  
+  <p> <b> Current location: </b>  {{city}} {{state}}  </p> 
+  
+  </span>
+  
+   <span id =  "schedule"> 
+     <h2> Their Schedule </h2>
+    {% for i in range(free_day|length) %}
+     <p> <b> They are free: </b> {{ free_day[i] }} <b> Start time: </b> {{ free_time_start[i] }} <b> End Time: </b> {{ free_time_end[i] }} </p>
+    {% endfor %}
+   </span>
+
+</body>
+
+    
+    
+
+</script>
+
+</html>
