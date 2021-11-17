@@ -577,7 +577,6 @@ def addFriend():
     #print(size)
     print(build)
     activity = request.args.get('activity')
-    activity = ""
     username_two = request.args.get('user2')
     email = request.args.get('email')
     error = None
