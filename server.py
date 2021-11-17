@@ -204,7 +204,7 @@ def home():
     has_other_pets_list = []
     allows_dropoffs = []
     try:
-        cursore = g.conn.execute('SELECT has_backyard, has_children, has_other_pets, allows_dropoffs FROM Will_Host WHERE username = (%s)', username)
+        cursor = g.conn.execute('SELECT has_backyard, has_children, has_other_pets, allows_dropoffs FROM Will_Host WHERE username = (%s)', username)
         for result in cursor:
             has_backyard_list.append(result['has_backyard'])
             has_children_list.append(result['has_children'])
@@ -214,9 +214,28 @@ def home():
         backyard = has_backyard_list[0]
         children = has_children_list[0]
         has_other_pets = has_other_pets_list[0]
+        allows_dropoffs = allows_dropoffs_list[0]
         
         if len(has_backyard_list) == 0:
             backyard = 'Is not willing to host'
+            
+    except Exception:
+        error = 'Will host'
+        
+        
+    mile_list = []
+    carpool_list = []
+    try:
+        cursor = g.conn.execute('SELECT mile_radius, will_carpool FROM Will_Travel WHERE username = (%s)', username)
+        for result in cursor:
+            mile_list.append(result['mile_radius'])
+            carpool_list.append(result['will_carpool'])
+        cursor.close()
+        mile = mile_list[0]
+        carpool = carpool_list[0]
+        
+        if len(mile_list) == 0:
+            mile = 'Is not willing to travel'
             
     except Exception:
         error = 'Will host'
@@ -226,7 +245,7 @@ def home():
         
         
                   
-    return render_template("home.html", user = username, name = name, profile_picture = profile_picture)
+    return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool)
 
 
 
