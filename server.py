@@ -460,7 +460,7 @@ def dogHome():
             
              
 
-    return render_template("dogHome.html", error = error, user = username, name = name, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
+    return render_template("dogHome.html", error = error, user = username, name = name, birthday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
 
 @app.route('/dogHome2')
@@ -495,7 +495,9 @@ def dogHome2():
           
         cursor.close()
         birthday = str(birthday_list[0])
+	print(birthday_list[0])
         print(birthday)
+	print('hllo')
         breed = breed_list[0]
         sex = sex_list[0]
         profile_picture = profile_picture_list[0]
@@ -568,7 +570,7 @@ def dogHome2():
         error = 'Unable to collect dog likes' 
                 
 
-    return render_template("dogHome2.html", error = error, user = my_username, dog2 = name, user2 = username, birhday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
+    return render_template("dogHome2.html", error = error, user = my_username, dog2 = name, user2 = username, birthday = birthday, breed = breed, sex = sex, profile_picture = profile_picture, bio = bio, since_joined = since_joined, size = size, build = build, **context_activity, **context_physiques, **context_accomodations, ** context_builds, **context_likes_name, **context_likes_username )
 
 @app.route('/search', methods = ["GET", "POST"])
 def search():
