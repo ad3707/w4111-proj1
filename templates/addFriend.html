@@ -63,6 +63,13 @@
      color: black;
      text-align: center;
    }
+    
+    h3 {
+     color: black;
+     text-align: center;
+     font-size: 15px; 
+   }
+
 
    #btncontainer {
      margin-top: 50px;
@@ -102,6 +109,8 @@
 
   <div id = "header">
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+    <a href="/home/user={{ user }}" class="button"> Home </a>  
+    <a href="/" class="button"> Log out </a> 
   </div>
 
 
@@ -113,8 +122,8 @@
     <span id = "box">
       <h2> {{ data_two[i] }} </h2>
       <img src = {{ data_three[i] }} id = "imglay"> 
-      <h2> {{ data_four[i] }} </h2>
-      <h2> Owner: {{ data_one[i] }} </h2>
+      <h3> {{ data_four[i] }} </h3>
+      <h3> Owner: {{ data_one[i] }} </h3>
       <a href="/dogHome2?user={{ user }}&user2={{ data_one[i] }}&dog2={{ data_two[i] }}" class="button"> Learn about {{ data_two[i] }} </a>  
     </span>
     {% endfor %}
