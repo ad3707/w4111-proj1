@@ -71,38 +71,27 @@
      float: left; 
    }
     
-    #dogcontainer {
-      margin-left: 70px; 
-    }
-    
-    #imgcont {
-       background-color: #fad195;
-       height: 400px;
-       width: 200px;
-       margin-top: auto;
-       margin-left: 70px;
-      
-    }
-    
-    #imglay {
-      margin-left: auto; 
-      margin-right: auto; 
-      margin-top: 30px;
-      height: 200px;
-      width: 200px;
-     
-    }
-    
     
     #search {
-     margin: auto;
-     background-color: #ffe1e1;
-     padding: 20px;
-     height: 300px;
-     width: 400px;
+    background-color: #fad195;
+     height: 600px;
+     width: 600px;
+     float:left;
+     margin-left: 50px;
+     margin-top: 50px;
+     margin-bottom: 0px;
+     text-align: center;
+     border-radius: 10px;
+     box-shadow: 5px 10px #FFE1E1;
     }
     
   
+  #inputs {
+     margin-bottom: 50px;
+     margin-left: 30px;
+
+   }
+   
   </style>
 
 
@@ -124,15 +113,15 @@
     <h3> If filtering by location, must enter both city and state. If filtering by physique, must put both size and build. </h3>
     <?php $user = $_GET['user']; ?>
     <form action = "/search" method = "POST">
-   <div id = "inputs">
+   <span id = "inputs">
      <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
     <input type = "text" id = "city" name = "city" placeholder = "city" />
-   </div>
-    <div id = "inputs">
+   </span>
+    <span id = "inputs">
     <input type = "text" id = "state" name = "state" placeholder = "state"  />
-   </div>
+   </span>
    
-   <span id = "inputs">
+   <div id = "inputs">
    <label for="size">Size:</label>
   <select id="size" name="size">
     <option value="">No Preference</option>
@@ -143,9 +132,9 @@
     <option value="xlarge">xlarge</option>
     <option value="xxlarge">xxlarge</option>
   </select>
-     </span>
+     </div>
    
-    <span id = "inputs">
+    <div id = "inputs">
     <label for="build">Build:</label>
   <select id="build" name="build">
     <option value="">No Preference</option>
@@ -153,10 +142,10 @@
     <option value="muscular">muscular</option>
     <option value="heavy-set">heavy-set</option>
   </select>
-        </span>
+        </div>
       
     
-    <span id = "inputs">
+    <div id = "inputs">
     <label for="activity">Activity:</label>
   <select id="activity" name="activity">
     <option value="">No Preference</option>
@@ -175,7 +164,7 @@
     <option value="Food date (grab a puppichino at Starbucks)">Food date (grab a puppichino at Starbucks)</option>
     <option value="Camping">Camping</option>
   </select>
-        </span>
+        </div> 
   
    <div id = "inputs">
     <input type = "text" id = "user_two" name = "user_two" placeholder = "username" />
