@@ -410,8 +410,8 @@ def addFriend():
                 
                 
         elif len(city) != 0 and len(state) != 0 and len(activity) != 0:
-            cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Resides_In R, Address AD, Activities AC WHERE AD.city = (%s) AND AD.state = (%s) AND AD.zip = R.zip AND AD.street_address = R.street_address AND D.username = R.username AND AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name', city, state, activity)
-            
+            try: 
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Resides_In R, Address AD, Activities AC WHERE AD.city = (%s) AND AD.state = (%s) AND AD.zip = R.zip AND AD.street_address = R.street_address AND D.username = R.username AND AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name', city, state, activity)
                 for result in cursor:
                     users_two.append(result['username'])
                     names.append(result['name'])
@@ -429,7 +429,8 @@ def addFriend():
                 
                 
         elif len(size) != 0 and len(build) != 0 and len(activity) != 0:
-            cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Activities AC WHERE AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name AND D.size = (%s) AND D.build = (%s)', activity, size, build)
+            try:
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Activities AC WHERE AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name AND D.size = (%s) AND D.build = (%s)', activity, size, build)
             
                 for result in cursor:
                     users_two.append(result['username'])
@@ -448,7 +449,8 @@ def addFriend():
                 
                 
         elif len(city) != 0 and len(state) != 0:
-            cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Resides_In R, Address AD WHERE AD.city = (%s) AND AD.state = (%s) AND AD.zip = R.zip AND AD.street_address = R.street_address AND D.username = R.username', city, state)
+            try:
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Resides_In R, Address AD WHERE AD.city = (%s) AND AD.state = (%s) AND AD.zip = R.zip AND AD.street_address = R.street_address AND D.username = R.username', city, state)
             
                 for result in cursor:
                     users_two.append(result['username'])
@@ -468,7 +470,8 @@ def addFriend():
                 
                 
         elif len(size) != 0 and len(build) != 0:
-            cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D WHERE D.size = (%s) AND D.build = (%s)', size, build)
+            try:
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D WHERE D.size = (%s) AND D.build = (%s)', size, build)
             
                 for result in cursor:
                     users_two.append(result['username'])
@@ -487,7 +490,8 @@ def addFriend():
                 
                 
         elif len(activity) != 0:
-            cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Activities AC WHERE AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name', activity)
+            try:
+                cursor = g.conn.execute('SELECT DISTINCT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Likes_Activity A, Activities AC WHERE AC.description = (%s) AND AC.activity_id = A.activity_id AND A.username = D.username AND A.name = D.name', activity)
             
                 for result in cursor:
                     users_two.append(result['username'])
