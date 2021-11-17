@@ -239,10 +239,29 @@ def home():
             
     except Exception:
         error = 'Will host'
+    
+    street_list = []
+    city_list = []
+    state_list = []
+    zip_list = []
+    try:
+        cursor = g.conn.execute('SELECT has_backyard, has_children, has_other_pets, allows_dropoffs FROM Will_Host WHERE username = (%s)', username)
+        for result in cursor:
+            street_list.append(result['has_backyard'])
+            city_list.append(result['has_children'])
+            state_list.append(result['has_other_pets'])
+            allows_dropoffs_list.append(result['allows_dropoffs'])
+        cursor.close()
+        backyard = has_backyard_list[0]
+        children = has_children_list[0]
+        has_other_pets = has_other_pets_list[0]
+        allows_dropoffs = allows_dropoffs_list[0]
         
-
-        
-        
+        if len(has_backyard_list) == 0:
+            backyard = 'Is not willing to host'
+            
+    except Exception:
+        error = 'Will host'
         
                   
     return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool)
