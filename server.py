@@ -298,6 +298,124 @@ def home():
                   
     return render_template("home.html", user = username, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip, **context_day, **context_start, **context_end)
 
+@app.route('/userHome2')
+def userHome2():
+    username = request.args.get('user')
+    user2 = request.args.get('user2')
+    dog2 = request.args.get('dog2')
+    print(username)
+    print(user2)
+    print(dog2)
+    error = None
+    name_list = []
+    profile_picture_list = []
+    
+    try:
+        cursor = g.conn.execute('SELECT name, profile_picture FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s)', user2)
+        for result in cursor:
+            name_list.append(result['name'])
+            profile_picture_list.append(result['profile_picture'])
+        cursor.close()
+        name = name_list[0]
+        profile_picture = profile_picture_list[0]
+    except Exception:
+        error = 'Invalid search query'
+        
+    has_backyard_list = []
+    has_children_list = []
+    has_other_pets_list = []
+    allows_dropoffs_list = []
+    
+    try:
+        cursor = g.conn.execute('SELECT has_backyard, has_children, has_other_pets, allows_dropoffs FROM Will_Host WHERE username = (%s)', user2)
+        for result in cursor:
+            has_backyard_list.append(result['has_backyard'])
+            print(has_backyard_list)
+            has_children_list.append(result['has_children'])
+            print(has_children_list)
+            has_other_pets_list.append(result['has_other_pets'])
+            allows_dropoffs_list.append(result['allows_dropoffs'])
+            
+        print(has_backyard_list)
+        
+        cursor.close()
+        print(len(has_backyard_list))
+        if len(has_backyard_list) != 0:
+            backyard = has_backyard_list[0]
+            print(backyard)
+            children = has_children_list[0]
+            has_other_pets = has_other_pets_list[0]
+            allows_dropoffs = allows_dropoffs_list[0]
+        
+        else:
+            backyard = 'Is not willing to host'
+            children = ""
+            has_other_pets = ""
+            allows_dropoffs = ""
+            
+    except Exception:
+        error = 'Will host'
+        
+        
+    mile_list = []
+    carpool_list = []
+    try:
+        cursor = g.conn.execute('SELECT mile_radius, will_carpool FROM Will_Travel WHERE username = (%s)', user2)
+        for result in cursor:
+            mile_list.append(result['mile_radius'])
+            carpool_list.append(result['will_carpool'])
+        cursor.close()
+        if len(mile_list) != 0:
+            mile = mile_list[0]
+            carpool = carpool_list[0]
+        
+        else:
+            mile = 'Is not willing to travel'
+            carpool = ""
+            
+    except Exception:
+        error = 'Will host'
+    
+    street_list = []
+    city_list = []
+    state_list = []
+    zip_list = []
+    try:
+        cursor = g.conn.execute('SELECT A.street_address, A.city, A.state, A.zip FROM Address A, Resides_In R WHERE R.username = (%s) AND A.zip = R.zip AND A.street_address = R.street_address', user2)
+        for result in cursor:
+            street_list.append(result['street_address'])
+            city_list.append(result['city'])
+            state_list.append(result['state'])
+            zip_list.append(result['zip'])
+        cursor.close()
+        street = street_list[0]
+        city = state_list[0]
+        state = state_list[0]
+        zip = zip_list[0]
+            
+    except Exception:
+        error = 'Address'
+    
+    free_day_list = []
+    free_time_start_list = []
+    free_time_end_list = []
+    try:
+        cursor = g.conn.execute('SELECT free_day, free_time_start, free_time_end FROM Is_Free WHERE username = (%s)', user2)
+        for result in cursor:
+            free_day_list.append(result['free_day'])
+            free_time_start_list.append(result['free_time_start'])
+            free_time_end_list.append(result['free_time_end'])
+        cursor.close()
+        
+        context_day = dict(free_day = free_day_list)
+        context_start = dict(free_time_start = free_time_start_list)
+        context_end = dict(free_time_end = free_time_end_list)
+        
+    except Exception:
+        error = 'Free time Query failed'
+        
+                  
+    return render_template("user2Home.html", user = username, user2 = user2, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip, **context_day, **context_start, **context_end)
 
 
 @app.route('/like', methods = ["GET", "POST"])
