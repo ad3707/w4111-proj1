@@ -122,6 +122,13 @@
      float: right; 
    }
     
+         #btncontainertwo {
+     margin-top: 70px;
+     margin-left: 10px;
+     text-align: center;
+     float: right; 
+   }
+    
     
   </style>
 
@@ -165,7 +172,7 @@
       {% for activity in data_activities %}
       <div> {{ activity }} </div>
         {%endfor%}
-        <span id = "btncontainer">
+        <span id = "btncontainertwo">
   <a href="/addActivity?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Activity! </a>   
      </span>
         
@@ -183,8 +190,8 @@
       <span>  {{data_buils[i] }} </span>
     </div>
         {%endfor%} 
-          <span id = "btncontainer">
-  <a href="/addSize?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Dog Type! </a>   
+          <span id = "btncontainertwo">
+  <a href="/addSize?user={{ user }}&name={{ name }}" class="buttonsmall"> Add a Dog Type! </a>   
      </span>
 </span>
 
@@ -193,7 +200,7 @@
     <p>    {% for accomodation in data_accomodations %}
       <div> {{ accomodation }} </div>
         {%endfor%} </p>
-      <span id = "btncontainer">
+      <span id = "btncontainertwo">
   <a href="/addAcc?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Accommodation! </a>   
      </span>
   </span>
