@@ -1118,7 +1118,7 @@ def editSchedule():
             g.conn.execute('INSERT INTO Is_Free(username, free_day, free_time_start, free_time_end) VALUES (%s, %s, %s, %s)', username, free_day, free_time_start, free_time_end)
         except Exception:
             error = 'Unable add to schedule'
-     if error is None:
+    if error is None:
         return redirect(url_for('home',user = username))
 
 if __name__ == "__main__":
