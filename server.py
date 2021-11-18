@@ -426,11 +426,14 @@ def addAcc():
 	
 	if request.method == "POST":
 		username = request.form['user']
+		print(username)
 		name = request.form['name']
+		print(name)
 		accommodation_id = request.form['accommodation']
+		print(accommodation_id)
         #accommodation_id = request.form['accommodation']
 		try:
-			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s, %s)' , username, name, accommodation_id)
+			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s)' , username, name, accommodation_id)
 
 			return redirect(url_for('dogHome', user = username, name = name))
 		
