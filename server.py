@@ -309,15 +309,18 @@ def user2Home():
     error = None
     name_list = []
     profile_picture_list = []
+    email_list = []
     
     try:
-        cursor = g.conn.execute('SELECT name, profile_picture FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s)', user2)
+        cursor = g.conn.execute('SELECT name, profile_picture, personal_email FROM Users_Contact_Info_Has_Contact_Info WHERE username = (%s)', user2)
         for result in cursor:
             name_list.append(result['name'])
             profile_picture_list.append(result['profile_picture'])
+            email_list.append(result['personal_email'])
         cursor.close()
         name = name_list[0]
         profile_picture = profile_picture_list[0]
+        email = email_list[0]
     except Exception:
         error = 'Invalid search query'
         
@@ -415,7 +418,7 @@ def user2Home():
         error = 'Free time Query failed'
         
                   
-    return render_template("user2Home.html", user = username, user2 = user2, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip, **context_day, **context_start, **context_end)
+    return render_template("user2Home.html", user = username, user2 = user2, name = name, email = email, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip, **context_day, **context_start, **context_end)
 
 
 @app.route('/addSize', methods = ["GET", "POST"])
