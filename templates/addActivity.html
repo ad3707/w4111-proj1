@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title> Dinder </title>
+  </head>
+
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: 'Copperplate', serif;
+      text-align: center;
+    }
+
+
+    #button {
+     width: 150px;
+     padding: 10px;
+     border: line;
+     border-radius: 5px;
+     background: #ffcda3;
+     font-size: 16px;
+     font-weight: bold;
+     margin-top: 80px;
+     border-color: black;
+    }
+    
+     #btncontainer {
+     margin-top: 60px;
+     margin-left: 30px;
+     text-align: center;
+     float: right; 
+   }
+
+    #header {
+     background-color: #00d0ff;
+     margin: auto;
+     height: 150px;
+   }
+
+   #form {
+     margin: auto;
+     background-color: #ffe1e1;
+     padding: 20px;
+     height: 750px;
+     width: 850px;
+     border-style: ridge: 
+
+   }
+
+   #inputs {
+     margin-bottom: 30px;
+
+   }
+
+
+  </style>
+
+
+
+<body>
+  <div id = "header">
+  <img src = "/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+ <span id = "btncontainer">
+  <a href="/home?user={{ user }}" class="button"> Home </a>   
+     </span>
+  <span id = "btncontainer">
+  <a href="/" class="button"> Log out </a> 
+  </span>
+
+
+  </div>
+  
+  {% if error %}
+  <p>{{ error }}</p>
+{% endif %}
+
+
+  <h1>Add Accommodation:</h1>
+  <div id = "form">
+  <form action = "/addActivity" method = "POST">
+    <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
+    <input type = "hidden" id = "name" name = "name" value = "{{ name }}"  />
+    
+      <div id = "inputs">
+        <label> Accommodations: <input type = "radio" id = "1" name = "activity" value = "1" /> <span> 1: Neighboorhood Walk </span></label><br>
+      <label> <input type = "radio" id = "2" name = "activity" value = "2" /> <span> 2: Nature Walk (short) </span></label><br>
+      <label><input type = "radio" id = "3" name = "activity" value = "3" /><span> 3: Nature hike (long) </span></label><br>
+      <label><input type = "radio" id = "4" name = "activity" value = "4" /> <span> 4: Dog Park </span></label><br>
+      <label><input type = "radio" id = "5" name = "activity" value = "5" /> <span> 5: Swim Day (short)  </span></label><br>
+      <label><input type = "radio" id = "6" name = "activity" value = "6"/> <span> 6: Neighborhood run </span></label><br>
+        <label><input type = "radio" id = "7" name = "activity" value = "7"/> <span> 7: Backyard Play </span></label><br>
+        <label><input type = "radio" id = "8" name = "activity" value = "8"/> <span> 8: Indoor Home Play </span></label><br>
+        <label><input type = "radio" id = "9" name = "activity" value = "9"/> <span> 9: Walking Tour of City (Day Excursion) </span></label><br>
+        <label><input type = "radio" id = "10" name = "activity" value = "10"/> <span> 10: Swim Day (Day Long Excursion) </span></label><br>
+        <label><input type = "radio" id = "11" name = "activity" value = "11"/> <span> 11: Doggy Day Care </span></label><br>
+        <label><input type = "radio" id = "12" name = "activity" value = "12"/> <span> 12: Bike Ride (Experience Required) </span></label><br>
+        <label><input type = "radio" id = "13" name = "activity" value = "13"/> <span> 13: Food Date (Grad a Puppichino at Starbucks!) </span></label><br>
+        <label><input type = "radio" id = "14" name = "activity" value = "14"/> <span> 14: Camping </span></label><br>
+    </div>
+<button type = "submit" id = "submit" > Add </button>
+
+    </form>
+    
+    </div>
+
+</body>
+  
+  <script> 
+    
+  document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    username = document.getElementById('username');
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
+
+</script>
+
+
+
+</html>
