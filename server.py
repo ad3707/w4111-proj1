@@ -1058,7 +1058,7 @@ def signup2():
             return redirect(url_for('home',user = username))      
             
                 
-    return render_template("signup2.html", error = error) 
+    return render_template("signup2.html", error = error, user=username) 
         
         
 
