@@ -439,6 +439,49 @@ def addAcc():
 			
 	return render_template("addAcc.html", error = error, user = username, name = name)
 
+@app.route('/addActivity', methods = ["GET", "POST"])
+def addActivity():
+	username = request.args.get('user')
+	name = request.args.get('name')
+	error = None
+	
+	if request.method == "POST":
+		username = request.form['user']
+		name = request.form['name']
+		activity_id = request.form['activity']
+        #accommodation_id = request.form['accommodation']
+		try:
+			cursor = g.conn.execute('INSERT INTO Likes_Activity(username, name, acctivity_id) VALUES (%s, %s, %s)' , username, name, activity_id)
+
+			return redirect(url_for('dogHome', user = username, name = name))
+		
+		except:
+			error = 'Add Activity Failed. Your dog may already like this activity'
+			
+	return render_template("addActivity.html", error = error, user = username, name = name)
+
+@app.route('/addSize', methods = ["GET", "POST"])
+def addSize():
+	username = request.args.get('user')
+	name = request.args.get('name')
+	error = None
+	
+	if request.method == "POST":
+		username = request.form['user']
+		name = request.form['name']
+		size = request.form['size']
+		build = request.form['build']       
+        #accommodation_id = request.form['accommodation']
+		try:
+			cursor = g.conn.execute('INSERT INTO Likes_Physique(username, name, size, build) VALUES (%s, %s, %s, %s)' , username, name, size, build)
+
+			return redirect(url_for('dogHome', user = username, name = name))
+		
+		except:
+			error = 'Add new Physique Failed. Your dog may already like this dog type.'
+			
+	return render_template("addSize.html", error = error, user = username, name = name)
+
 
 @app.route('/like', methods = ["GET", "POST"])
 def like():
