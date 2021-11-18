@@ -23,7 +23,6 @@
    }
 
    #form {
-     margin: auto;
      margin-bottom: 50px;
      background-color: #ffe1e1;
      padding: 20px;
@@ -33,12 +32,23 @@
      border-style: ridge;
      border-color: #fad195;
      border-width: 5px;
+     float: right;
+     margin-right: 30px;
     
    }
 
    #inputs {
      margin-bottom: 30px;
    }
+  
+  #pic {
+   height:500px;
+   width:600px;
+   float: left; 
+   margin-left: 30px;
+   
+  }
+  
 
  </style>
  
@@ -58,7 +68,11 @@
 
  <h2>Sign In</h2>
 
- <div id = "form">
+  <span id = "pic">
+ <img src="/static/welcome.jpeg" alt="Dog with board that says welcome back">
+ </span>
+ 
+ <span id = "form">
  <form action = "/signin" method = "POST">
    <div id = "inputs">
     <input type = "text" id = "username" name = "username" placeholder = "Username" required />
@@ -69,11 +83,9 @@
  <input type = "submit" value = "Sign in"></input>
   
  </form>
- </div>
+ </span>
  
- <div>
- <img src="/static/welcome.jpeg" alt="Dog with board that says welcome back" height = 300px width = 500px>
- </div>
+
  
 </body>
  
