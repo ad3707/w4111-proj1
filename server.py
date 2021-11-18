@@ -427,7 +427,7 @@ def addActivity():
 	if request.method == "POST":
 		username = request.form['user']
 		name = request.form['name']
-		activity_id = request.form['accommodation']
+		activity_id = request.form['activity']
         #accommodation_id = request.form['accommodation']
 		try:
 			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s)' , username, name, activity_id)
