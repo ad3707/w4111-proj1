@@ -170,7 +170,7 @@
      
       {% for activity in data_activities %}
       <div> {{ activity }} </div>
-        {%endfor%}
+        {% endfor %}
         <span id = "btncontainertwo">
   <a href="/addActivity?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Activity! </a>   
      </span>
@@ -187,7 +187,7 @@
       <span> {{data_physiques[i] }} </span>
       <span>  {{data_buils[i] }} </span>
     </div>
-        {%endfor%} 
+        {% endfor %} 
           <span id = "btncontainertwo">
   <a href="/addSize?user={{ user }}&name={{ name }}" class="buttonsmall"> Add a Dog Type! </a>   
      </span>
@@ -197,7 +197,7 @@
     <h3> Any Accomodations I may Have: </h3>
     <p>    {% for accomodation in data_accomodations %}
       <div> {{ accomodation }} </div>
-        {%endfor%} </p>
+        {% endfor %} </p>
       <span id = "btncontainertwo">
   <a href="/addAcc?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Accommodation! </a>   
      </span>
@@ -212,7 +212,7 @@
       <span> {{data_likes_name[i] }} </span>
       <span> {{data_likes_username[i] }} </span>
     </div>
-        {%endfor%} 
+        {% endfor %} 
 </span>
 
 
