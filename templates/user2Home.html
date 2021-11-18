@@ -13,18 +13,19 @@
       text-align: center;
     }
 
-    .button {
-    width: 150px;
-    height: 25px;
+     .button {
+    width: 200px;
+    height: 35px;
     background: #C4C4C4;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
     color: black;
     font-weight: bold;
-    margin-top: 100px;
+    margin-top: 50px;
     text-decoration:none;
     box-shadow: 4px 5px #878787;
+    font-size: 15px;
 }
 
 
@@ -32,13 +33,6 @@
      background-color: #00d0ff;
      margin: auto;
      height: 150px;
-   }
-
-
-  #btncontainer {
-     margin-top: 50px;
-     margin-left: 30px;
-     text-align: center;
    }
     
     #topbtncontainer {
@@ -108,16 +102,18 @@
   <div id = "header">
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
     
-    <span id = "btncontainer">
-  <a href="/home?user={{ user }}" class="button"> Home </a>   
-     </span>
-  <span id = "btncontainer">
+  
+  <span id = "topbtncontainer">
   <a href="/" class="button"> Log out </a> 
   </span>
+  
+    <span id = "topbtncontainer">
+  <a href="/home?user={{ user }}" class="button"> Home </a>   
+     </span>
     
   </div>
   
-  <h2>  {{ user2 }} ! </h2>
+  <h2>  Meet {{ user2 }} ! </h2>
   
   
   <img src = {{ profile_picture }} id = "profilecont" >
