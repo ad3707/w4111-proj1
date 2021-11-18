@@ -1024,9 +1024,12 @@ def signup2():
 	will_host = request.form['will_host']
 	will_travel = request.form['will_travel']
 	mile_radius = request.form['mile_radius']
+	will_carpool = request.form['will_carpool']
 	has_kids = request.form['has_kids']
 	has_pets = request.form['has_pets']
 	has_back = request.form['has_back']
+	allows_dropoffs = request.form['allows_dropoffs']
+	
         
         if error is None and name:
             try: 
