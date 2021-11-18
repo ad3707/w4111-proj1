@@ -60,8 +60,10 @@
  <h2>Create An Account</h2>
 
      <div id = "form">
+      <?php $user = $_GET['user']; ?>
  <form action = "{{url_for("signup")}}" method = "post">
   <div id = "inputs">
+   <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
    <input type = "text" name = "username" id = "username" placeholder = "Username" required/>
   </div>
    <div id = "inputs">
