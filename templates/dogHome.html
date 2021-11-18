@@ -182,9 +182,9 @@
       {% for activity in data_activities %}
       <div> {{ activity }} </div>
         {% endfor %}
-        <span id = "btncontainertwo">
+        <div id = "btncontainertwo">
   <a href="/addActivity?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Activity! </a>   
-     </span>
+     </div>
         
   </p>
 </span>
@@ -200,9 +200,9 @@
       <span>  {{data_buils[i] }} </span>
     </div>
         {% endfor %} 
-          <span id = "btncontainertwo">
+          <div id = "btncontainertwo">
   <a href="/addSize?user={{ user }}&name={{ name }}" class="buttonsmall"> Add a Dog Type! </a>   
-     </span>
+     </div>
 </span>
 
     <span id = "box">
@@ -210,9 +210,9 @@
     <p>    {% for accomodation in data_accomodations %}
       <div> {{ accomodation }} </div>
         {% endfor %} </p>
-      <span id = "btncontainertwo">
+      <div id = "btncontainertwo">
   <a href="/addAcc?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Accommodation! </a>   
-     </span>
+     </div>
   </span>
 
   <span id = "box">
