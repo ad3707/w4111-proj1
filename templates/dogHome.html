@@ -151,6 +151,9 @@
       {% for activity in data_activities %}
       <div> {{ activity }} </div>
         {%endfor%}
+        <span id = "btncontainer">
+  <a href="/addActivity?user={{ user }}&name={{ name }}" class="button"> Add an Activity! </a>   
+     </span>
         
   </p>
 </span>
@@ -166,6 +169,9 @@
       <span>  {{data_buils[i] }} </span>
     </div>
         {%endfor%} 
+          <span id = "btncontainer">
+  <a href="/addSize?user={{ user }}&name={{ name }}" class="button"> Add an Dog Type! </a>   
+     </span>
 </span>
 
     <span id = "box">
