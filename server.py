@@ -419,7 +419,7 @@ def user2Home():
 
 
 @app.route('/addAcc', methods = ["GET", "POST"])
-def like():
+def addAcc():
 	username = request.args.get('user')
 	name = request.args.get('name')
 	error = None
@@ -437,7 +437,7 @@ def like():
 		except:
 			error = 'Add Accommodation Failed. Your dog may already have this accommodation'
 			
-	return render_template("like.html", error = error, user = username, name = name)
+	return render_template("addAcc.html", error = error, user = username, name = name)
 
 
 @app.route('/like', methods = ["GET", "POST"])
