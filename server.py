@@ -426,14 +426,11 @@ def addAcc():
 	
 	if request.method == "POST":
 		username = request.form['user']
-		print(username)
 		name = request.form['name']
-		print(name)
 		accommodation_id = request.form['accommodation']
-		print(accommodation_id)
         #accommodation_id = request.form['accommodation']
 		try:
-			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s)' , username, name, accommodation_id)
+			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s, %s)' , username, name, accommodation_id)
 
 			return redirect(url_for('dogHome', user = username, name = name))
 		
@@ -1024,6 +1021,12 @@ def signup2():
         city = request.form['city']
         state = request.form['state']
         zipcode = request.form['zip']
+	will_host = request.form['will_host']
+	will_travel = request.form['will_travel']
+	mile_radius = request.form['mile_radius']
+	has_kids = request.form['has_kids']
+	has_pets = request.form['has_pets']
+	has_back = request.form['has_back']
         
         if error is None and name:
             try: 
