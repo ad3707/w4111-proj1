@@ -439,49 +439,6 @@ def addAcc():
 			
 	return render_template("addAcc.html", error = error, user = username, name = name)
 
-@app.route('/addActivity', methods = ["GET", "POST"])
-def addActivity():
-	username = request.args.get('user')
-	name = request.args.get('name')
-	error = None
-	
-	if request.method == "POST":
-		username = request.form['user']
-		name = request.form['name']
-		activity_id = request.form['activity']
-        #accommodation_id = request.form['accommodation']
-		try:
-			cursor = g.conn.execute('INSERT INTO Likes_Activity(username, name, acctivity_id) VALUES (%s, %s, %s)' , username, name, activity_id)
-
-			return redirect(url_for('dogHome', user = username, name = name))
-		
-		except:
-			error = 'Add Activity Failed. Your dog may already like this activity'
-			
-	return render_template("addActivity.html", error = error, user = username, name = name)
-
-@app.route('/addSize', methods = ["GET", "POST"])
-def addSize():
-	username = request.args.get('user')
-	name = request.args.get('name')
-	error = None
-	
-	if request.method == "POST":
-		username = request.form['user']
-		name = request.form['name']
-		size = request.form['size']
-		build = request.form['build']       
-        #accommodation_id = request.form['accommodation']
-		try:
-			cursor = g.conn.execute('INSERT INTO Likes_Physique(username, name, size, build) VALUES (%s, %s, %s, %s)' , username, name, size, build)
-
-			return redirect(url_for('dogHome', user = username, name = name))
-		
-		except:
-			error = 'Add new Physique Failed. Your dog may already like this dog type.'
-			
-	return render_template("addSize.html", error = error, user = username, name = name)
-
 
 @app.route('/like', methods = ["GET", "POST"])
 def like():
@@ -1109,7 +1066,17 @@ def signup2():
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET work_number = (%s) WHERE username = (%s)', work_number, username)
             except Exception:
                 error = 'Invalid work number. Number must be 11 characters or less and must be unique. Try again'
-        if error is None:
+        if error is None AND will_host == 'Y':
+            try:
+                g.conn.execute('INSERT INTO Will_Host(username, has_backyard, has_children, has_other_pets, allows_dropoffs) VALUES (%s, %s, %s, %s)', username, has_back, has_kids, has_pets, allows_dropoffs)
+            except Exception:
+                error = 'Invalid will host'
+        if error is None AND will_travel == 'Y':
+            try:
+                g.conn.execute('INSERT INTO Will_Travel(username,will_carpool, mile_radius) VALUES (%s, %s, %s)', username, will_carpool, mile_radius)
+            except Exception:
+                error = 'Invalid will host'
+        if error is None:   
             address = []
             try:
                 cursor = g.conn.execute('SELECT street_address FROM Address WHERE street_address = (%s) AND zip = (%s)', street_address, zipcode)
@@ -1129,7 +1096,10 @@ def signup2():
             except Exception:
                 error = 'Unable to create address'
         if error is None:
-            return redirect(url_for('home',user = username))      
+            return redirect(url_for('home',user = username))
+
+
+
             
                 
     return render_template("signup2.html", error = error, user=username) 
