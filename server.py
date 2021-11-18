@@ -971,7 +971,7 @@ def signup():
         password = request.form['password']
             
         try:
-            g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(username, personal_email, password) VALUES (%s, %s)',username, personal_email, password)
+            g.conn.execute('INSERT INTO Users_Contact_Info_Has_Contact_Info(username, personal_email, password) VALUES (%s, %s, %s)',username, personal_email, password)
         except Exception:
                 error = 'Invalid username, email, or password. Check that username and password are at most 15 characters and email is at most 50. Otherwise, username or email is taken. Try again.'
         if error is None:
