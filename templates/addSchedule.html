@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: Sanchez;
+      text-align: center;
+    }
+
+
+
+    button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #ffcda3;
+      font-size: 16px;
+    }
+
+
+    
+    #header {
+     background-color: #00d0ff;
+     margin: auto;
+     font-family: Helvetica;
+     height: 150px;
+   }
+
+   #form {
+     margin: auto;
+     background-color: #ffe1e1;
+     padding: 20px;
+     height: 720px;
+     width: 800px;
+     border-style: ridge;
+     border-color: #ffcda3;
+     border-width: 5px;
+     
+   }
+
+   #inputs {
+     margin-bottom: 30px;
+   }
+
+  </style>
+
+<head>
+  <title> Dinder </title>
+  </head>
+
+<body>
+   <div id = "header"> 
+    <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
+  </div> 
+  
+  {% if error %}
+  <p>{{ error }}</p>
+{% endif %}
+
+
+  <h2>Create An Account</h2>
+
+      <div id = "form">
+        <?php $user = $_GET['user']; ?>
+    <form action = "{{url_for("addSchedule")}}" method = "post">
+      
+    <div id = "inputs">
+    <input type = "hidden" id = "user" name = "user" value = "{{ user }}"  />
+    <input type = "text" name = "free_day" id = "free_day" placeholder = "Day" /> 
+      </div>
+      
+    <div id = "inputs">
+    <input type = "time" name = "free_time_start" id = "free_time_start" placeholder = "Time Start" /> 
+      </div>
+      
+      <div id = "inputs">
+    <input type = "time" name = "free_time_end" id = "free_time_end" placeholder = "Time End" /> 
+      </div>
+     
+      
+      <button type = "submit" id = "submit" > Submit </button>
+      </form>
+    
+  </div>
+
+
+
+</body>
+
+<script>
+document.getElementById('button').onclick = function() {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    user = url.searchParams.get("user");
+    //location.href =  '/addDog?user' + user.value;
+    var container = document.getElementById('form');
+    container.appendChild(a);
+}
+
+</script>
+
+
+</html>
