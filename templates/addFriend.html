@@ -15,21 +15,27 @@
     
     
 
-    .button {
+     .button {
     width: 200px;
-    height: 25px;
+    height: 35px;
     background: #C4C4C4;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     border-radius: 10px;
     color: black;
     font-weight: bold;
-    margin-top: 150px;
+    margin-top: 50px;
     text-decoration:none;
     box-shadow: 4px 5px #878787;
     font-size: 15px;
 }
-
+    
+     #topbtncontainer {
+     margin-top: 80px;
+     margin-right: 30px;
+     text-align: center;
+     float:right;
+   }
 
     #header {
      background-color: #00d0ff;
@@ -109,12 +115,14 @@
 
   <div id = "header">
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
-  <span id = "btncontainer">
-  <a href="/home?user={{ user }}" class="button"> Home </a>   
-     </span>
-  <span id = "btncontainer">
+   <span id = "topbtncontainer">
   <a href="/" class="button"> Log out </a> 
   </span>
+    
+    <span id = "topbtncontainer">
+  <a href="/home?user={{ user }}" class="button"> Home </a>   
+     </span>
+ 
   </div>
   
 
