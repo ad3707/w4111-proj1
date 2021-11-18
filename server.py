@@ -986,12 +986,10 @@ def signup():
 def signup2():    
     username = request.args.get('user')
     error = None
- 
-    
     if request.method == "POST":
 	username = request.form['user']
-        name = request.form['name']
-        date_joined = request.form['date_joined']
+	name = request.form['name']
+	date_joined = request.form['date_joined']
         profile_picture = request.form['profile_picture']
         work_email = request.form['work_email']
         cell_number = request.form['cell_number']
