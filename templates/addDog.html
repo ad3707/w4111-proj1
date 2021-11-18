@@ -13,17 +13,27 @@
     }
 
 
-    #button {
-     width: 150px;
-     padding: 10px;
-     border: line;
-     border-radius: 5px;
-     background: #ffcda3;
-     font-size: 16px;
-     font-weight: bold;
+    .button {
+    width: 200px;
+    height: 35px;
+    background: #C4C4C4;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    margin-top: 50px;
+    text-decoration:none;
+    box-shadow: 4px 5px #878787;
+    font-size: 15px;
+}
+    
+     #topbtncontainer {
      margin-top: 80px;
-     border-color: black;
-    }
+     margin-right: 30px;
+     text-align: center;
+     float:right;
+   }
     
      #btncontainer {
      margin-top: 60px;
@@ -44,7 +54,10 @@
      padding: 20px;
      height: 750px;
      width: 850px;
-     border-style: ridge: 
+     border-style: ridge; 
+     border-radius: 10px;
+     border-color: #fad195;
+     border-width: 5px;
 
    }
 
@@ -61,14 +74,14 @@
 <body>
   <div id = "header">
   <img src = "/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
- <span id = "btncontainer">
-  <a href="/home?user={{ user }}" class="button"> Home </a>   
-     </span>
-  <span id = "btncontainer">
+  <span id = "topbtncontainer">
   <a href="/" class="button"> Log out </a> 
   </span>
-
-
+    
+    <span id = "topbtncontainer">
+  <a href="/home?user={{ user }}" class="button"> Home </a>   
+     </span>
+ 
   </div>
   
   {% if error %}
