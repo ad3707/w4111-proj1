@@ -1103,8 +1103,23 @@ def signup2():
             
                 
     return render_template("signup2.html", error = error, user=username) 
-        
-        
+
+@app.route('/editSchedule', methods = ["GET", "POST"])
+def editSchedule():    
+    username = request.args.get('user')
+    error = None
+    if request.method == "POST":
+        username = request.form['user']
+        free_day = request.form['free_day']
+        free_time_start = request.form['free_time_start']
+        free_time_end = request.form['free_time_end']
+    if error is None:
+        try:
+            g.conn.execute('INSERT INTO Is_Free(username, free_day, free_time_start, free_time_end) VALUES (%s, %s, %s, %s)', username, free_day, free_time_start, free_time_end)
+        except Exception:
+            error = 'Unable add to schedule'
+     if error is None:
+        return redirect(url_for('home',user = username))
 
 if __name__ == "__main__":
   import click
