@@ -946,7 +946,7 @@ def addDog():
         print(build)
         
         try:
-            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, breed, sex, profile_picture, bio, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)', name, breed, sex, profile_picture, bio, username, size, build)
+            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, breed, birthday, sex, profile_picture, bio, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', name, breed, birthday, sex, profile_picture, bio, username, size, build)
             
         except Exception:
             error = 'Invalid entry. Please note you cannot have two dogs of the same name. Please check your formatting. Inputs may be too long.'
@@ -983,7 +983,7 @@ def signup():
 
 
 @app.route('/signup2', methods = ["GET", "POST"])
-def signup2():
+def signup2():    
     username = request.args.get('user')
     error = None
     if request.method == "POST":
