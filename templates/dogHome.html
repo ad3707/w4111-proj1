@@ -26,6 +26,20 @@
     text-decoration:none;
     box-shadow: 4px 5px #878787;
 }
+    
+        .buttonsmall {
+    width: 60px;
+    height: 15px;
+    background: #C4C4C4;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    margin-top: 100px;
+    text-decoration:none;
+    box-shadow: 4px 5px #878787;
+}
 
 
     #header {
@@ -152,7 +166,7 @@
       <div> {{ activity }} </div>
         {%endfor%}
         <span id = "btncontainer">
-  <a href="/addActivity?user={{ user }}&name={{ name }}" class="button"> Add an Activity! </a>   
+  <a href="/addActivity?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Activity! </a>   
      </span>
         
   </p>
@@ -160,7 +174,7 @@
 
 
   <span id = "box">
-    <h3> Dog Types I play well with: </h3>
+    <h3> Dog Types I Play Well With: </h3>
     <span> Size </span>
     <span> Build </span> <br>
         {% for i in range(data_physiques|length) %}
@@ -170,7 +184,7 @@
     </div>
         {%endfor%} 
           <span id = "btncontainer">
-  <a href="/addSize?user={{ user }}&name={{ name }}" class="button"> Add an Dog Type! </a>   
+  <a href="/addSize?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Dog Type! </a>   
      </span>
 </span>
 
@@ -180,7 +194,7 @@
       <div> {{ accomodation }} </div>
         {%endfor%} </p>
       <span id = "btncontainer">
-  <a href="/addAcc?user={{ user }}&name={{ name }}" class="button"> Add an Accommodation! </a>   
+  <a href="/addAcc?user={{ user }}&name={{ name }}" class="buttonsmall"> Add an Accommodation! </a>   
      </span>
   </span>
 
