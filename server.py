@@ -1120,6 +1120,7 @@ def editSchedule():
             error = 'Unable add to schedule'
     if error is None:
         return redirect(url_for('home',user = username))
+    return render_template("editSchedule.html", error = error, user=username) 
 
 if __name__ == "__main__":
   import click
