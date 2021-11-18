@@ -427,7 +427,8 @@ def like():
 	if request.method == "POST":
 		username = request.form['user']
 		name = request.form['name']
-        accommodation_id = request.form['accommodation']
+		accommodation_id = request.form['accommodation']
+        #accommodation_id = request.form['accommodation']
 		try:
 			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s, %s)' , username, name, accommodation_id)
 
