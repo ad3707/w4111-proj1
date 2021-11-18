@@ -817,6 +817,24 @@ def addFriend():
             context_bios = dict(data_four = bios)
         except Exception:
             error = 'Search query failed'
+            
+    elif len(email) != 0:
+        try:
+            cursor = g.conn.execute('SELECT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D WHERE D.personal_email = (%s)', email)
+            for result in cursor:
+                    users_two.append(result['username'])
+                    names.append(result['name'])
+                    bios.append(result['bio'])
+                    profile_pictures.append(result['profile_picture'])
+            cursor.close()
+                
+            context_users_two = dict(data_one = users_two)
+            context_names = dict(data_two = names)
+            context_profile_pictures = dict(data_three = profile_pictures)
+            context_bios = dict(data_four = bios)
+        except Exception:
+            error = 'No email match'            
+            
                 
     elif len(city) != 0 and len(state) != 0 and len(size) != 0 and len(build) != 0 and len(activity) != 0:
         try:
