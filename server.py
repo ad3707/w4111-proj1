@@ -823,6 +823,7 @@ def addFriend():
             
     elif len(email) != 0:
         try:
+            print(email)
             cursor = g.conn.execute('SELECT D.username, D.name, D.bio, D.profile_picture FROM Dogs_Owned_By_Has_Physique D, Users_Contact_Info_Has_Contact_Info U WHERE D.username = (%s) AND D.username = U.username AND U.personal_email = (%s)', username_two, email)
             for result in cursor:
                     users_two.append(result['username'])
