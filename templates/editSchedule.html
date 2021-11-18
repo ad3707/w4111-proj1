@@ -3,7 +3,7 @@
   <style>
     body{
       font-size: 15pt;
-      font-family: Sanchez;
+      font-family: Copperplate;
       text-align: center;
     }
 
@@ -79,7 +79,7 @@
       </div>
      
       
-      <button type = "submit" id = "submit" > Submit </button>
+      <button type = "submit" id = "submit" > Add </button>
       </form>
     
   </div>
@@ -93,7 +93,6 @@ document.getElementById('button').onclick = function() {
     var a = document.createElement('a');
     a.target = '_blank';
     user = url.searchParams.get("user");
-    //location.href =  '/addDog?user' + user.value;
     var container = document.getElementById('form');
     container.appendChild(a);
 }
