@@ -1034,11 +1034,11 @@ def signup2():
             try:
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET work_number = (%s) WHERE username = (%s)', work_number, username)
             except Exception:
-                error = 'Invalid work number. Number mmust be 11 characters or less and must be unique. Try again'
+                error = 'Invalid work number. Number must be 11 characters or less and must be unique. Try again'
         if error is None:
             address = []
             try:
-                cursor = g.conn.execute('SELECT street_address FROM Address WHERE street_address = (%s) AND zip = (%s)', street_address, zip)
+                cursor = g.conn.execute('SELECT street_address FROM Address WHERE street_address = (%s) AND zip = (%d)', street_address, zip)
                 for result in cursor:
                     address.append(result['street_address'])
                 cursor.close()
@@ -1046,7 +1046,7 @@ def signup2():
                 error = 'Unable to query address'
             if len(address) == 0:
                 try:
-                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %s)', street_address, zip)
+                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %d)', street_address, city, state, zip)
                 except Exception:
                     error = 'Invalid street address, city, state, or zipcode. Address is at most 30 characters while city is at most 20 and state is at most 15. Zipcode must be an integer'
         if error is None:
