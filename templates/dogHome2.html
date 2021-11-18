@@ -34,10 +34,18 @@
      height: 150px;
    }
 
-
-   #btncontainer {
-     margin-right: 50px;
-     margin-top: 80px;
+    
+    #btncontainer {
+     margin-top: 30px;
+     margin-left: 30px;
+     text-align: center;
+   }
+    
+    #topbtncontainer {
+     margin-top: 60px;
+     margin-left: 30px;
+     text-align: center;
+     float: right; 
    }
     
     #box {
@@ -114,10 +122,10 @@
 
   <div id = "header">
     <img src="/static/logoDinder.png" alt="Dinder logo" height = 150px width = 500px>
-    <span id = "btncontainer">
+    <span id = "topbtncontainer">
   <a href="/home?user={{ user }}" class="button"> Home </a>   
      </span>
-  <span id = "btncontainer">
+  <span id = "topbtncontainer">
   <a href="/" class="button"> Log out </a> 
   </span>
   </div>
