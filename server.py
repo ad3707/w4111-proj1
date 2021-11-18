@@ -418,6 +418,28 @@ def user2Home():
     return render_template("user2Home.html", user = username, user2 = user2, name = name, profile_picture = profile_picture, has_backyard = backyard, has_children = children, has_other_pets = has_other_pets, allows_dropoffs = allows_dropoffs, mile_radius = mile, will_carpool = carpool, street_address = street, city = city, state = state, zip = zip, **context_day, **context_start, **context_end)
 
 
+@app.route('/addActivity', methods = ["GET", "POST"])
+def addActivity():
+	username = request.args.get('user')
+	name = request.args.get('name')
+	error = None
+	
+	if request.method == "POST":
+		username = request.form['user']
+		name = request.form['name']
+		activity_id = request.form['accommodation']
+        #accommodation_id = request.form['accommodation']
+		try:
+			cursor = g.conn.execute('INSERT INTO Has_Accommodation(username, name, accommodation_id) VALUES (%s, %s, %s)' , username, name, activity_id)
+
+			return redirect(url_for('dogHome', user = username, name = name))
+		
+		except:
+			error = 'Add Activity Failed. Your dog may already like this activity'
+			
+	return render_template("addActivity.html", error = error, user = username, name = name)
+
+
 @app.route('/addAcc', methods = ["GET", "POST"])
 def addAcc():
 	username = request.args.get('user')
