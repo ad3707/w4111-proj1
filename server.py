@@ -946,7 +946,7 @@ def addDog():
         print(build)
         
         try:
-            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, breed, sex, profile_picture, bio, since, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)', name, breed, sex, profile_picture, bio, since, username, size, build)
+            g.conn.execute('INSERT INTO Dogs_Owned_By_Has_Physique(name, breed, sex, profile_picture, bio, username, size, build) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)', name, breed, sex, profile_picture, bio, username, size, build)
             
         except Exception:
             error = 'Invalid entry. Please note you cannot have two dogs of the same name. Please check your formatting. Inputs may be too long.'
@@ -1046,12 +1046,12 @@ def signup2():
                 error = 'Unable to query address'
             if len(address) == 0:
                 try:
-                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %d)', street_address, city, state, int(zip))
+                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %s)', street_address, city, state, zip)
                 except Exception:
                     error = 'Invalid street address, city, state, or zipcode. Address is at most 30 characters while city is at most 20 and state is at most 15. Zipcode must be an integer'
         if error is None:
             try:
-                g.conn.execute('INSERT INTO Resides_In(username, street_address, zip) VALUES (%s, %s, %d)', username, street_address, int(zip))
+                g.conn.execute('INSERT INTO Resides_In(username, street_address, zip) VALUES (%s, %s, %s)', username, street_address, zip)
             except Exception:
                 error = 'Unable to create address'
         if error is None:
