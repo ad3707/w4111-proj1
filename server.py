@@ -998,7 +998,7 @@ def signup2():
         street_address = request.form['street_address']
         city = request.form['city']
         state = request.form['state']
-        zip = request.form['zip']
+        zipcode = request.form['zip']
         
         if error is None and name:
             try: 
@@ -1038,7 +1038,7 @@ def signup2():
         if error is None:
             address = []
             try:
-                cursor = g.conn.execute('SELECT street_address FROM Address WHERE street_address = (%s) AND zip = (%s)', street_address, zip)
+                cursor = g.conn.execute('SELECT street_address FROM Address WHERE street_address = (%s) AND zip = (%s)', street_address, zipcode)
                 for result in cursor:
                     address.append(result['street_address'])
                 cursor.close()
@@ -1046,12 +1046,12 @@ def signup2():
                 error = 'Unable to query address'
             if len(address) == 0:
                 try:
-                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %s)', street_address, city, state, zip)
+                    g.conn.execute('INSERT INTO Address(street_address, city, state, zip) VALUES (%s, %s, %s, %s)', street_address, city, state, zipcode)
                 except Exception:
                     error = 'Invalid street address, city, state, or zipcode. Address is at most 30 characters while city is at most 20 and state is at most 15. Zipcode must be an integer'
         if error is None:
             try:
-                g.conn.execute('INSERT INTO Resides_In(username, street_address, zip) VALUES (%s, %s, %s)', username, street_address, zip)
+                g.conn.execute('INSERT INTO Resides_In(username, street_address, zip) VALUES (%s, %s, %s)', username, street_address, zipcode)
             except Exception:
                 error = 'Unable to create address'
         if error is None:
