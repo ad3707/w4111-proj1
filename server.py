@@ -984,7 +984,7 @@ def signup():
 
 @app.route('/signup2', methods = ["GET", "POST"])
 def signup2():    
-    username = request.args.get('username')
+    username = request.args.get('user')
     error = None
     
     if request.method == "POST":
