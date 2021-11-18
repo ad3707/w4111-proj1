@@ -1066,12 +1066,12 @@ def signup2():
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET work_number = (%s) WHERE username = (%s)', work_number, username)
             except Exception:
                 error = 'Invalid work number. Number must be 11 characters or less and must be unique. Try again'
-        if error is None AND will_host == 'Y':
+        if error is None and (will_host == 'Y'):
             try:
                 g.conn.execute('INSERT INTO Will_Host(username, has_backyard, has_children, has_other_pets, allows_dropoffs) VALUES (%s, %s, %s, %s)', username, has_back, has_kids, has_pets, allows_dropoffs)
             except Exception:
                 error = 'Invalid will host'
-        if error is None AND will_travel == 'Y':
+        if error is None and (will_travel == 'Y'):
             try:
                 g.conn.execute('INSERT INTO Will_Travel(username,will_carpool, mile_radius) VALUES (%s, %s, %s)', username, will_carpool, mile_radius)
             except Exception:
