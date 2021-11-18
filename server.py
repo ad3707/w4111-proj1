@@ -1098,12 +1098,12 @@ def signup2():
             try:
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET cell_number = (%s) WHERE username = (%s)',cell_number, username)
             except Exception:
-                error = 'Invalid cell number. Number mmust be 11 characters or less and must be unique. Try again'
+                error = 'Invalid cell number. Number must be 11 characters or less and must be unique. Try again'
         if error is None and home_number:
             try:
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET home_number = (%s) WHERE username = (%s)',home_number, username)
             except Exception:
-                error = 'Invalid home number. Number mmust be 11 characters or less and must be unique. Try again'
+                error = 'Invalid home number. Number must be 11 characters or less and must be unique. Try again'
         if error is None and work_number:
             try:
                 g.conn.execute('UPDATE Users_Contact_Info_Has_Contact_Info SET work_number = (%s) WHERE username = (%s)', work_number, username)
@@ -1163,7 +1163,7 @@ def editSchedule():
             error = 'Unable add to schedule'
     if error is None:
         return redirect(url_for('home',user = username))
-    return render_template("editSchedule.html", error = error, user=username) 
+    return render_template("editSchedule.html", user=username) 
 
 if __name__ == "__main__":
   import click
